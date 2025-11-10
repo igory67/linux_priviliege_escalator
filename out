@@ -1,0 +1,7 @@
+   393344      4 -rw-r--r--   1 qwe      qwe                   36 Sep 30 10:32 /var/log/logforlin
+   528379      4 -rw-r-----   1 www-data adm                  827 Sep  4 12:30 /var/log/nginx/access.log.2.gz
+   528331      4 -rw-r-----   1 www-data adm                 1837 Sep  5 13:31 /var/log/nginx/access.log.1
+   529113      0 -rw-r-----   1 www-data adm                    0 Sep  5 07:46 /var/log/nginx/error.log
+   528303      0 -rw-r-----   1 www-data adm                    0 Sep  8 12:25 /var/log/nginx/access.log
+   528304      4 -rw-r-----   1 www-data adm                 3300 Aug 26 11:06 /var/log/nginx/error.log.1
+
