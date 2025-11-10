@@ -1,0 +1,45 @@
+[1;34m==================||Backup files (up to 100)$||=====================[0m
+-rw-r--r-- 1 root root 26 Oct  3 13:53 /ohnoufoundme[1;31mbackup[0m[1;31mbackup[0m.[1;31mbck[0m
+-rw-r--r-- 1 root root 43976 Aug  5 17:14 /usr/lib/x86_64-linux-gnu/open-vm-tools/plugins/vmsvc/libvm[1;31mbackup[0m.so
+-rw-r--r-- 1 root root 4355 Aug 12 10:33 /usr/lib/modules/6.8.0-79-generic/kernel/drivers/net/team/team_mode_active[1;31mbackup[0m.ko.zst
+-rw-r--r-- 1 root root 3497 Aug 12 10:33 /usr/lib/modules/6.8.0-79-generic/kernel/drivers/power/supply/wm831x_[1;31mbackup[0m.ko.zst
+-rw-r--r-- 1 root root 4348 Aug 12 09:44 /usr/lib/modules/6.8.0-78-generic/kernel/drivers/net/team/team_mode_active[1;31mbackup[0m.ko.zst
+-rw-r--r-- 1 root root 3510 Aug 12 09:44 /usr/lib/modules/6.8.0-78-generic/kernel/drivers/power/supply/wm831x_[1;31mbackup[0m.ko.zst
+-rwxr-xr-x 1 root root 2586 Jul 17  2024 /usr/libexec/dpkg/dpkg-db-[1;31mbackup[0m
+-rw-r--r-- 1 root root 3132 Aug  5 17:14 /usr/share/man/man8/vgcfg[1;31mbackup[0m.8.gz
+-rw-r--r-- 1 root root 445715 Aug  5 17:14 /usr/share/doc/manpages/Changes[1;31m.old[0m.gz
+-rwxrwxr-x 1 serveruser1 serveruser1 4258 Oct  3 14:01 /home/serveruser1/[1;31mbackup[0mofglobalshthaticantbreak
+-rw-rw-r-- 1 serveruser1 serveruser1 329 Nov 10 14:19 /home/serveruser1/Linpeas_my/2_files_checks/2_enumerating_scripts/10_[1;31mbackup[0ms_folders.sh
+-rw-r--r-- 1 root root 28 Oct  3 13:53 /[1;31mbackup[0m/[1;31mbackup[0mshere
+
+[1;34m==================||password in cmd history$||=====================[0m
+/home/serveruser1/.bash_history:nano simple_checks/1_ssh_[1;31mpassw[0mords.sh
+/home/serveruser1/.bash_history:nano simple_checks/1_ssh_[1;31mpassw[0mords.sh
+/home/serveruser1/.bash_history:nano simple_checks/1_ssh_[1;31mpassw[0mords.sh
+/home/serveruser1/.bash_history:echo 'type=TTY msg=audit(1234): comm="[1;31msudo[0m" data="passwordsecret"' | sudo tee -a /var/log/audit/audit.log
+/home/serveruser1/.bash_history:echo 'type=TTY msg=audit(1234): comm="[1;31msudo[0m" data="passwordsecret"' | tee -a /var/log/audit/audit.log
+/home/serveruser1/.bash_history:chmod +x 1_ssh_[1;31mpassw[0mords.sh 
+/home/serveruser1/.bash_history:git.sh 9_interesting_files/27_Passwords_in_logs.sh
+/home/serveruser1/.bash_history:./git.sh 9_interesting_files/27_Passwords_in_logs.sh
+/home/serveruser1/.bash_history:mv 27_Passwords_in_logs.sh ../Linpeas_my/simple_checks/3_[1;31mpassw[0mords_in_logs.sh
+/home/serveruser1/.bash_history:chmod +x 3_[1;31mpassw[0mords_in_logs.sh 
+/home/serveruser1/.bash_history:nano 3_[1;31mpassw[0mords_in_logs.sh 
+/home/serveruser1/.bash_history:nano simple_checks/3_[1;31mpassw[0mords_in_logs.sh 
+/home/serveruser1/.bash_history:cat 3_[1;31mpassw[0mords_in_logs.sh 
+/home/serveruser1/.bash_history:nano simple_checks/1_ssh_[1;31mpassw[0mords.sh 
+/home/serveruser1/.bash_history:nano 16_[1;31mpassw[0mord_in_history.sh 
+/home/serveruser1/.bash_history:[1;31mpassw[0md --help
+/home/serveruser1/.bash_history:su - qwe
+/home/serveruser1/.bash_history:su -qwe
+/home/serveruser1/.bash_history:su - qwe
+/home/serveruser1/.bash_history:su
+/home/serveruser1/.bash_history:su -qwe
+/home/serveruser1/.bash_history:su - qwe
+/home/serveruser1/.bash_history:su qwe
+/home/serveruser1/.bash_history:su - qwe
+
+[1;34m==================||TTY passwords in logs$||=====================[0m
+
+[1;34m==================||Emails inside log files up to 50$||=====================[0m
+[1;32m      2 ftpmaster@ubuntu.com[0m
+[1;34m==================||Passwords in log files up to 50$||=====================[0m

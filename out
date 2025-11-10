@@ -1,10 +1,2 @@
-[1;34m==================||unexpected in /root $||=====================[0m
-[1;31m/ohnoufoundmebackupbackup.bck[0m
-[1;31m/sbin.usr-is-merged[0m
-[1;31m/lib.usr-is-merged[0m
-[1;31m/modified.txt[0m
-[1;31m/bin.usr-is-merged[0m
-[1;31m/swap.img[0m
-[1;31m/adittext[0m
-[1;31m/backup[0m
-
+[1;34m==================||BACKUPS$||=====================[0m
+no pstorage

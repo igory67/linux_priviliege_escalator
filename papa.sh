@@ -10,7 +10,12 @@ source /home/serveruser1/Linpeas_my/global.sh
 #./*.sh
 #echo $HOMESEARCH
 
-for script in ./*/*.sh; do
+for script in ./1*/*.sh; do
+#for script in $(ls -r ./*/*/| sort -n); do
+	source "$script"
+done
+
+for script in ./2*/*/*.sh; do 
 	source "$script"
 done
 
