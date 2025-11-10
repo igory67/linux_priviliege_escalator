@@ -1,15 +1,30 @@
 #!/bin/bash -i
+#!/bin/bash -i
 
-#if [ "$(history 2>/dev/null)" ]; then
 print_2title "password in cmd history"
-#	history | grep -Ei "$pwd_inside_history" "$f" 2>/dev/null \
-history | grep -Ei "$pwd_inside_history" 2>/dev/null \
-| sed -${E} "s,$pwd_inside_history,${SED_RED},"
-echo ""
+# print_2title "passwords in history files"
 
-history | grep -Ei "$pwd_inside_history"
-history | grep -i passw
+for histfile in "$HOME/.bash_history" "$HOME/.zsh_history" "$HOME/.ash_history" "$HOME/.histfile"; do
+    [ -f "$histfile" ] && grep -EiH "$pwd_inside_history" "$histfile" 2>/dev/null | sed -${E} "s,$pwd_inside_history,${SED_RED},"
+done
+
+# Search root's history files if we're root
+if [ "$IAMROOT" -eq 1 ]; then
+    for histfile in "/root/.bash_history" "/root/.zsh_history" "/root/.ash_history" "/root/.histfile"; do
+        [ -f "$histfile" ] && grep -EiH "$pwd_inside_history" "$histfile" 2>/dev/null | sed -${E} "s,$pwd_inside_history,${SED_RED},"
+    done
+fi
+
+echo ""
+#if [ "$(history 2>/dev/null)" ]; then
+# #	history | grep -Ei "$pwd_inside_history" "$f" 2>/dev/null \
+# history | grep -Ei "$pwd_inside_history" 2>/dev/null \
+# | sed -${E} "s,$pwd_inside_history,${SED_RED},"
+# echo ""
+
+# history | grep -Ei "$pwd_inside_history"
+# history | grep -i passw
 
 #fi
-$HOME/.bash_history | grep passw
+# $HOME/.bash_history | grep passw
 #qecho $pwd_inside_history
