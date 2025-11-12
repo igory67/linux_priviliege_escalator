@@ -18,17 +18,17 @@ print_2title()
 
 print_red()
 {
-    printf "${RED}%s${NC}\n" "$1"
+    printf "${PRINTF_RED}%s${NC}\n" "$1"
 }
 
 print_red_yellow() 
 {
-    printf "${RED_YELLOW}%s${NC}\n" "$1"
+    printf "${PRINTF_RED_YELLOW}%s${NC}\n" "$1"
 }
 
 print_green() 
 {
-    printf "${BOLD_GREEN}%s${NC}\n" "$1"
+    printf "${PRINTF_BOLD_GREEN}%s${NC}\n" "$1"
 }
 
 export C=$(printf '\033')
