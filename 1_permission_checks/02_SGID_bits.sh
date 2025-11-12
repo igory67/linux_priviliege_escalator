@@ -16,7 +16,7 @@ printf "%s\n" "$sgids_files" | while read s; do
     
   # own the sgid file? for some reason
   elif ! [ "$IAMROOT" ] && [ -O "$sname" ]; then
-    printf "${SED_RED}IMPORTANT: You own the SGID file: %s " $sname" ${NC}
+    printf "${SED_RED}IMPORTANT: You own the SGID file${NC}: %s" " $sname" 
    # echo "You own the SGID file: $sname" | sed -${E} "s,.*,${SED_RED},"
     
   # writable sgid file
