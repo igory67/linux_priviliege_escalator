@@ -1,16 +1,6 @@
 #!/bin/bash
 print_2title "SUID checks!"
 
-if ! [ "$STRINGS" ]; then
-  echo_not_found "strings"
-  #STRINGS="$(command -v strings 2>/dev/null || echo -n '')"
-fi
-
-if ! [ "$STRACE" ]; then
-  echo_not_found "strace"
-  #STRACE="$(command -v strace 2>/dev/null || echo -n '')"
-fi
-
 #look for all suid files except for in /dev/
 suids_files=$(find $ROOT_FOLDER -perm -4000 -type f ! -path "/dev/*" 2>/dev/null)
 

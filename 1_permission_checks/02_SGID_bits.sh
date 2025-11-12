@@ -1,31 +1,25 @@
-# Title: Interesting Permissions Files - SGID
-# ID: IP_SGID
-# Author: Carlos Polop
-# Last Update: 22-08-2023
-# Description: SGID
-# License: GNU GPL
-# Version: 1.0
-# Functions Used: print_2title, print_info
-# Global Variables: $cfuncs, $IAMROOT, $LDD, $READELF, $ROOT_FOLDER, $sidB, $sidG1, $sidG2, $sidG3, $sidG4, $sidVB, $sidVB2, $STRACE, $STRINGS, $TIMEOUT, $Wfolders
-# Initial Functions:
-# Generated Global Variables: $sgids_files, $sname, $sline_first, $sline, $LD_LIBRARY_PATH, $OLD_LD_LIBRARY_PATH
-# Fat linpeas: 0
-# Small linpeas: 1
 
-
-print_2title "SGID"
+print_2title "SGID checks! "
 print_info "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#sudo-and-suid"
+
+#look for all sgid files except for in /dev/
 sgids_files=$(find $ROOT_FOLDER -perm -2000 -type f ! -path "/dev/*" 2>/dev/null)
+
 printf "%s\n" "$sgids_files" | while read s; do
   s=$(ls -lahtr "$s")
-  #If starts like "total 332K" then no SUID bin was found and xargs just executed "ls" in the current folder
+  #If starts like "total 332K" then no SGID bin was found and xargs just executed "ls" in the current folder
   if echo "$s" | grep -qE "^total";then break; fi
 
   sname="$(echo $s | awk '{print $9}')"
+  #skip noise
   if [ "$sname" = "."  ] || [ "$sname" = ".."  ]; then
-    true #Don't do nothing
+    true
+    
+  # own the sgid file? for some reason
   elif ! [ "$IAMROOT" ] && [ -O "$sname" ]; then
     echo "You own the SGID file: $sname" | sed -${E} "s,.*,${SED_RED},"
+    
+  # writable sgid file
   elif ! [ "$IAMROOT" ] && [ -w "$sname" ]; then #If write permision, win found (no check exploits)
     echo "You can write SGID file: $sname" | sed -${E} "s,.*,${SED_RED_YELLOW},"
   else
