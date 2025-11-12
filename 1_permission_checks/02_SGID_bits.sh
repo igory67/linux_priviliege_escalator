@@ -23,7 +23,7 @@ printf "%s\n" "$sgids_files" | while read s; do
     
   # writable sgid file
   elif ! [ "$IAMROOT" ] && [ -w "$sname" ]; then #If write permision, win found (no check exploits)
-  print_red "IMPORTANT: you can edit this SGID file: $s" 
+  print_red "IMPORTANT: you can edit this SGID file: %s" "$s" 
     #printf ${RED_YELLOW}"IMPORTANT: You can write SGID file: %s\n" "$s"  ${NC}
     #    echo "You can write SGID file: $sname" | sed -${E} "s,.*,${SED_RED_YELLOW},"
   else

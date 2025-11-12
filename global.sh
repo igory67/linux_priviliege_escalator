@@ -18,7 +18,7 @@ print_2title()
 
 print_red()
 {
-    printf "${BOLD_RED}%s${NC}\n" "$1"
+    printf "${RED}%s${NC}\n" "$1"
 }
 
 print_red_yellow() 
