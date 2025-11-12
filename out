@@ -6,6 +6,7 @@
 -rwxr-sr-x 1 root shadow 27K Sep 15 12:37 /usr/sbin[1;32m/pam_extrausers_chkpwd[0m
 -r-xr-sr-x 1 root postdrop 23K Apr  8  2024 /usr/sbin[1;32m/postqueue[0m
 -rwxr-sr-x 1 root _ssh 303K Aug 26 13:49 /usr/bin[1;32m/ssh-agent[0m
+[1;31m&[0mIMPORTANT: You own the SGID file[0m:  -rwsrws--- 1 serveruser1 root 0 Nov 12 14:59 /usr/bin/urownbinomg[1;31;103m&[0mIMPORTANT:[0m You can write SGID file: -rwSr-Srw- 1 root root 0 Nov 12 14:58 /usr/bin/binthatseditable
 -rwsr-s--x 1 root root 26 Nov 12 14:50 /usr/bin/binverydangerousoooohsodangerouswow
 -rwsr-s--x 1 root root 26 Nov 12 14:50 /usr/bin/binverydangerousoooohsodangerouswow
 -rwxr-sr-x 1 root shadow 71K May 30  2024 /usr/bin[1;32m/chage[0m
