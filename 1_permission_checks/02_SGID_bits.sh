@@ -16,12 +16,12 @@ printf "%s\n" "$sgids_files" | while read s; do
     
   # own the sgid file? for some reason
   elif ! [ "$IAMROOT" ] && [ -O "$sname" ]; then
-    printf "${SED_RED}IMPORTANT: You own the SGID file${NC}: %s" " $sname" 
+    printf "${SED_RED}IMPORTANT: You own the SGID file${NC}: %s" " $s" 
    # echo "You own the SGID file: $sname" | sed -${E} "s,.*,${SED_RED},"
     
   # writable sgid file
   elif ! [ "$IAMROOT" ] && [ -w "$sname" ]; then #If write permision, win found (no check exploits)
-    printf "${SED_RED_YELLOW}IMPORTANT:${NC} You can write SGID file: %s\n" "$sname"  
+    printf "${SED_RED_YELLOW}IMPORTANT:${NC} You can write SGID file: %s\n" "$s"  
 #    echo "You can write SGID file: $sname" | sed -${E} "s,.*,${SED_RED_YELLOW},"
   else
     c="a"
@@ -46,11 +46,11 @@ printf "%s\n" "$sgids_files" | while read s; do
               if echo "$sline_first" | grep -qEv "$cfuncs"; then
                 if echo "$sline_first" | grep -q "/" && [ -f "$sline_first" ]; then #If a path
                   if [ -O "$sline_first" ] || [ -w "$sline_first" ]; then #And modifiable
-                    printf "$ITALIC  --- It looks like $RED$sname$NC$ITALIC is using $RED$sline_first$NC$ITALIC and you can modify it (strings line: $sline)\n"
+                    printf "$ITALIC  --- It looks like $RED$s$NC$ITALIC is using $RED$sline_first$NC$ITALIC and you can modify it (strings line: $sline)\n"
                   fi
                 else #If not a path
                   if [ ${#sline_first} -gt 2 ] && command -v "$sline_first" 2>/dev/null | grep -q '/'; then #Check if existing binary
-                    printf "$ITALIC  --- It looks like $RED$sname$NC$ITALIC is executing $RED$sline_first$NC$ITALIC and you can impersonate it (strings line: $sline)\n"
+                    printf "$ITALIC  --- It looks like $RED$s$NC$ITALIC is executing $RED$sline_first$NC$ITALIC and you can impersonate it (strings line: $sline)\n"
                   fi
                 fi
               fi
@@ -58,7 +58,7 @@ printf "%s\n" "$sgids_files" | while read s; do
           fi
 
           if [ "$LDD" ] || [ "$READELF" ]; then
-            echo "$ITALIC  --- Checking for writable dependencies of $sname...$NC"
+            echo "$ITALIC  --- Checking for writable dependencies of $s...$NC"
           fi
           if [ "$LDD" ]; then
             "$LDD" "$sname" | grep -E "$Wfolders" | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
