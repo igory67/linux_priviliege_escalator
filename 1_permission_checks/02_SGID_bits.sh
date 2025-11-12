@@ -1,5 +1,6 @@
 
 print_2title "SGID checks! "
+printf "%s \n" "$sidVB"
 
 #look for all sgid files except for in /dev/
 sgids_files=$(find $ROOT_FOLDER -perm -2000 -type f ! -path "/dev/*" 2>/dev/null)
@@ -34,9 +35,11 @@ printf "%s\n" "$sgids_files" | while read s; do
       fi
     done;
     if [ "$c" ]; then
-      if echo "$s" | grep -qE "$sidG1" || echo "$s" | grep -qE "$sidG2" || echo "$s" | grep -qE "$sidG3" || echo "$s" | grep -qE "$sidG4" || echo "$s" | grep -qE "$sidVB" || echo "$s" | grep -qE "$sidVB2"; then
-echo "i'm also retarded"
-        echo "$s" | sed -${E} "s,$sidG1,${SED_GREEN}," | sed -${E} "s,$sidG2,${SED_GREEN}," | sed -${E} "s,$sidG3,${SED_GREEN}," | sed -${E} "s,$sidG4,${SED_GREEN}," | sed -${E} "s,$sidVB,${SED_RED_YELLOW}," | sed -${E} "s,$sidVB2,${SED_RED_YELLOW},"
+      if echo "$s" | grep -qE "$sidG1" || echo "$s" | grep -qE "$sidG2" || echo "$s" | grep -qE "$sidG3" || echo "$s" | grep -qE "$sidG4" || echo "$s" | grep -qE "$sidVB" || echo "$s"; then
+#| grep -qE "$sidVB2"; \then
+#echo "i'm also retarded"
+        echo "$s" | sed -${E} "s,$sidG1,${SED_GREEN}," | sed -${E} "s,$sidG2,${SED_GREEN}," | sed -${E} "s,$sidG3,${SED_GREEN}," | sed -${E} "s,$sidG4,${SED_GREEN}," | sed -${E} "s,$sidVB,${SED_RED_YELLOW},"
+# | sed -${E} "s,$sidVB2,${SED_RED_YELLOW},"
       else
 echo "i'm else retarded fuck me"
         echo "$s (Unknown SGID binary)" | sed -${E} "s,/.*,${SED_RED},"
