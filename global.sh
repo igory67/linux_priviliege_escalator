@@ -27,6 +27,8 @@ export SED_RED="${C}[1;31m&${C}[0m"
 export SED_GREEN="${C}[1;32m&${C}[0m"
 export SED_YELLOW="${C}[1;33m&${C}[0m"
 export SED_BLUE="${C}[1;34m&${C}[0m"
+export SED_RED_YELLOW="${C}[1;31;103m&${C}[0m"
+ 
 
 if echo | sed -r "" >/dev/null 2>&1; then
 	export E="r"
