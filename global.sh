@@ -16,6 +16,21 @@ print_2title()
 	printf "${BLUE}==================||$1$||=====================${NC}\n"
 }
 
+print_red()
+{
+    printf "${BOLD_RED}%s${NC}\n" "$1"
+}
+
+print_red_yellow() 
+{
+    printf "${RED_YELLOW}%s${NC}\n" "$1"
+}
+
+print_green() 
+{
+    printf "${BOLD_GREEN}%s${NC}\n" "$1"
+}
+
 export C=$(printf '\033')
 export RED="${C}[1;31m"
 export GREEN="${C}[1;32m"
@@ -27,8 +42,21 @@ export SED_RED="${C}[1;31m&${C}[0m"
 export SED_GREEN="${C}[1;32m&${C}[0m"
 export SED_YELLOW="${C}[1;33m&${C}[0m"
 export SED_BLUE="${C}[1;34m&${C}[0m"
+export SED_CYAN="${C}[0;36m&${C}[0m"
 export SED_RED_YELLOW="${C}[1;31;103m&${C}[0m"
  
+export PRINTF_RED='\033[0;31m'
+export PRINTF_GREEN='\033[0;32m'
+export PRINTF_YELLOW='\033[1;33m'
+export PRINTF_BLUE='\033[0;34m'
+export PRINTF_CYAN='\033[0;36m'
+export PRINTF_RED_YELLOW='\033[1;31;43m'  
+export PRINTF_NC='\033[0m' 
+
+export PRINTF_BOLD_RED='\033[1;31m'
+export PRINTF_BOLD_GREEN='\033[1;32m'
+export PRINTF_BOLD_YELLOW='\033[1;33m'
+
 
 if echo | sed -r "" >/dev/null 2>&1; then
 	export E="r"

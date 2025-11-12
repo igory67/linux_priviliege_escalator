@@ -17,12 +17,14 @@ printf "%s\n" "$sgids_files" | while read s; do
     
   # own the sgid file? for some reason
   elif ! [ "$IAMROOT" ] && [ -O "$sname" ]; then
-    printf "IMPORTANT: You own the SGID file: %s" ${SED_RED} " $s" 
+  print_red "IMPORTANT: you own this SGID file: %s" "$s"
+    #printf "IMPORTANT: You own the SGID file: %s" ${SED_RED} " $s" 
    # echo "You own the SGID file: $sname" | sed -${E} "s,.*,${SED_RED},"
     
   # writable sgid file
   elif ! [ "$IAMROOT" ] && [ -w "$sname" ]; then #If write permision, win found (no check exploits)
-    printf ${RED_YELLOW}"IMPORTANT: You can write SGID file: %s\n" "$s"  ${NC}
+  print_red "IMPORTANT: you can edit this SGID file: $s" 
+    #printf ${RED_YELLOW}"IMPORTANT: You can write SGID file: %s\n" "$s"  ${NC}
     #    echo "You can write SGID file: $sname" | sed -${E} "s,.*,${SED_RED_YELLOW},"
   else
     c="a"
