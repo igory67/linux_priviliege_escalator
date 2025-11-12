@@ -1,6 +1,5 @@
 
 print_2title "SGID checks! "
-print_info "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#sudo-and-suid"
 
 #look for all sgid files except for in /dev/
 sgids_files=$(find $ROOT_FOLDER -perm -2000 -type f ! -path "/dev/*" 2>/dev/null)
