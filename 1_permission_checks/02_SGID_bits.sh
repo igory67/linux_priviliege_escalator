@@ -46,7 +46,6 @@ printf "%s\n" "$sgids_files" | while read s; do
       else
 echo "i'm else retarded fuck me"
         echo "$s (Unknown SGID binary)" | sed -${E} "s,/.*,${SED_RED},"
-        printf $ITALIC
         if ! [ "$FAST" ]; then
         
           if [ "$STRINGS" ]; then
@@ -55,11 +54,11 @@ echo "i'm else retarded fuck me"
               if echo "$sline_first" | grep -qEv "$cfuncs"; then
                 if echo "$sline_first" | grep -q "/" && [ -f "$sline_first" ]; then #If a path
                   if [ -O "$sline_first" ] || [ -w "$sline_first" ]; then #And modifiable
-                    printf "$ITALIC  --- It looks like $RED$s$NC$ITALIC is using $RED$sline_first$NC$ITALIC and you can modify it (strings line: $sline)\n"
+                    printf "  --- It looks like $RED$s$NC is using $RED$sline_first$NC and you can modify it (strings line: $sline)\n"
                   fi
                 else #If not a path
                   if [ ${#sline_first} -gt 2 ] && command -v "$sline_first" 2>/dev/null | grep -q '/'; then #Check if existing binary
-                    printf "$ITALIC  --- It looks like $RED$s$NC$ITALIC is executing $RED$sline_first$NC$ITALIC and you can impersonate it (strings line: $sline)\n"
+                    printf "  --- It looks like $RED$s$NC is executing $RED$sline_first$NC and you can impersonate it (strings line: $sline)\n"
                   fi
                 fi
               fi
@@ -67,7 +66,7 @@ echo "i'm else retarded fuck me"
           fi
 
           if [ "$LDD" ] || [ "$READELF" ]; then
-            echo "$ITALIC  --- Checking for writable dependencies of $s...$NC"
+            echo "  --- Checking for writable dependencies of $s...$NC"
           fi
           if [ "$LDD" ]; then
             "$LDD" "$sname" | grep -E "$Wfolders" | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
@@ -77,12 +76,12 @@ echo "i'm else retarded fuck me"
           fi
 
           if [ "$TIMEOUT" ] && [ "$STRACE" ] && [ -x "$sname" ]; then
-            printf $ITALIC
+            printf 
             echo "----------------------------------------------------------------------------------------"
             echo "  --- Trying to execute $sname with strace in order to look for hijackable libraries..."
             OLD_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
             export LD_LIBRARY_PATH=""
-            timeout 2 "$STRACE" "$sname" 2>&1 | grep -i -E "open|access|no such file" | sed -${E} "s,open|access|No such file,${SED_RED}$ITALIC,g"
+            timeout 2 "$STRACE" "$sname" 2>&1 | grep -i -E "open|access|no such file" | sed -${E} "s,open|access|No such file,${SED_RED},g"
             printf $NC
             export LD_LIBRARY_PATH=$OLD_LD_LIBRARY_PATH
             echo "----------------------------------------------------------------------------------------"

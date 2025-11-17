@@ -39,7 +39,6 @@ printf "%s\n" "$suids_files" | while read s; do
         # | sed -${E} "s,$sidVB2,${SED_RED_YELLOW},"
       else
         echo "$s (Unknown SUID binary!)" | sed -${E} "s,/.*,${SED_RED},"
-      #  printf $ITALIC
         
         
         if [ "$STRINGS" ]; then
@@ -48,11 +47,11 @@ printf "%s\n" "$suids_files" | while read s; do
             if echo "$sline_first" | grep -qEv "$cfuncs"; then
               if echo "$sline_first" | grep -q "/" && [ -f "$sline_first" ]; then #If a path
                 if [ -O "$sline_first" ] || [ -w "$sline_first" ]; then #And modifiable
-                  printf "$ITALIC  --- It looks like $RED$sname$NC$ITALIC is using $RED$sline_first$NC$ITALIC and you can modify it (strings line: $sline) (https://tinyurl.com/suidpath)\n"
+                  printf "  --- It looks like $RED$sname$NC is using $RED$sline_first$NC and you can modify it (strings line: $sline) (https://tinyurl.com/suidpath)\n"
                 fi
               else #If not a path
                 if [ ${#sline_first} -gt 2 ] && command -v "$sline_first" 2>/dev/null | grep -q '/' && echo "$sline_first" | grep -Eqv "\.\."; then #Check if existing binary
-                  printf "$ITALIC  --- It looks like $RED$sname$NC$ITALIC is executing $RED$sline_first$NC$ITALIC and you can impersonate it (strings line: $sline) (https://tinyurl.com/suidpath)\n"
+                  printf "  --- It looks like $RED$sname$NC is executing $RED$sline_first$NC and you can impersonate it (strings line: $sline) (https://tinyurl.com/suidpath)\n"
                   printf "--- It looks like $RED$sname$NCis executing $RED$sline_first$NC$ and you can impersonate it (strings line: $sline) (https://tinyurl.com/suidpath)\n"
                 fi
               fi
@@ -61,7 +60,6 @@ printf "%s\n" "$suids_files" | while read s; do
         fi
 
         if [ "$LDD" ] || [ "$READELF" ]; then
-#          echo "$ITALIC  --- Checking for writable dependencies of $sname...$NC"
           echo " --- Checking for writable dependencies of $sname..."
         fi
         if [ "$LDD" ]; then
@@ -72,7 +70,6 @@ printf "%s\n" "$suids_files" | while read s; do
         fi
         
         if [ "$TIMEOUT" ] && [ "$STRACE" ] && [ -x "$sname" ]; then
-          #printf $ITALIC
           echo "----------------------------------------------------------------------------------------"
           echo "  --- Trying to execute $sname with strace in order to look for hijackable libraries..."
           OLD_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
