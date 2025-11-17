@@ -39,7 +39,7 @@ printf "%s\n" "$suids_files" | while read s; do
         # | sed -${E} "s,$sidVB2,${SED_RED_YELLOW},"
       else
         echo "$s (Unknown SUID binary!)" | sed -${E} "s,/.*,${SED_RED},"
-        printf $ITALIC
+      #  printf $ITALIC
         
         
         if [ "$STRINGS" ]; then
@@ -53,6 +53,7 @@ printf "%s\n" "$suids_files" | while read s; do
               else #If not a path
                 if [ ${#sline_first} -gt 2 ] && command -v "$sline_first" 2>/dev/null | grep -q '/' && echo "$sline_first" | grep -Eqv "\.\."; then #Check if existing binary
                   printf "$ITALIC  --- It looks like $RED$sname$NC$ITALIC is executing $RED$sline_first$NC$ITALIC and you can impersonate it (strings line: $sline) (https://tinyurl.com/suidpath)\n"
+                  printf "--- It looks like $RED$sname$NCis executing $RED$sline_first$NC$ and you can impersonate it (strings line: $sline) (https://tinyurl.com/suidpath)\n"
                 fi
               fi
             fi
@@ -60,7 +61,8 @@ printf "%s\n" "$suids_files" | while read s; do
         fi
 
         if [ "$LDD" ] || [ "$READELF" ]; then
-          echo "$ITALIC  --- Checking for writable dependencies of $sname...$NC"
+#          echo "$ITALIC  --- Checking for writable dependencies of $sname...$NC"
+          echo " --- Checking for writable dependencies of $sname..."
         fi
         if [ "$LDD" ]; then
           "$LDD" "$sname" | grep -E "$Wfolders" | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
@@ -70,13 +72,13 @@ printf "%s\n" "$suids_files" | while read s; do
         fi
         
         if [ "$TIMEOUT" ] && [ "$STRACE" ] && [ -x "$sname" ]; then
-          printf $ITALIC
+          #printf $ITALIC
           echo "----------------------------------------------------------------------------------------"
           echo "  --- Trying to execute $sname with strace in order to look for hijackable libraries..."
           OLD_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
           export LD_LIBRARY_PATH=""
-          timeout 2 "$STRACE" "$sname" 2>&1 | grep -i -E "open|access|no such file" | sed -${E} "s,open|access|No such file,${SED_RED}$ITALIC,g"
-          printf $NC
+          timeout 2 "$STRACE" "$sname" 2>&1 | grep -i -E "open|access|no such file" | sed -${E} "s,open|access|No such file,${SED_RED},g"
+       #   printf $NC
           export LD_LIBRARY_PATH=$OLD_LD_LIBRARY_PATH
           echo "----------------------------------------------------------------------------------------"
           echo ""
