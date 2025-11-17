@@ -16,6 +16,7 @@ def fetch_gtfobins():
         try:
             rb = requests.get(f"https://raw.githubusercontent.com/GTFOBins/GTFOBins.github.io/master/_gtfobins/{b}.md", timeout=7)
         except:
+            print("a load failed this time")
             continue
             
         if "sudo:" in rb.text:
