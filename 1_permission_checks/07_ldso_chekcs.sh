@@ -1,17 +1,26 @@
 #!/bin/bash
 
 if ! [ "$IAMROOT" ]; then
-    print_2title "Checking misconfigurations of ld.so"
-    print_info "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#ldso"
-    if [ -f "/etc/ld.so.conf" ] && [ -w "/etc/ld.so.conf" ]; then 
-        echo "You have write privileges over /etc/ld.so.conf" | sed -${E} "s,.*,${SED_RED_YELLOW},"; 
-        printf $RED$ITALIC"/etc/ld.so.conf\n"$NC;
-    else
-        printf $GREEN$ITALIC"/etc/ld.so.conf\n"$NC;
-fi
+  print_2title "ld.so checks!"
 
-  echo "Content of /etc/ld.so.conf:"
+  if [ -f "/etc/ld.so.conf" ] && [ -w "/etc/ld.so.conf" ]; then
+    print_red_yellow "Writable /etc/ld.so.conf \n"
+    print_red_yellow "/etc/ld.so.conf \n"
+  else
+    print_green "/etc/ld.so.conf    \n"
+  fi
+
+ echo "What's inside of   /etc/ld.so.conf:"
+ # echo ""
+    # small_print "What's inside of   /etc/ld.so.conf:\n"
   cat /etc/ld.so.conf 2>/dev/null | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
+
+#HERE TRY TO 
+$TEMPORARY_CAT_VALUE=cat /etc/ld.so.conf 2>/dev/null
+print_red_yellow $TEMPORARY_CAT_VALUE
+
+
+
 
   # Check each configured folder
   cat /etc/ld.so.conf 2>/dev/null | while read l; do
@@ -19,31 +28,31 @@ fi
       ini_path=$(echo "$l" | cut -d " " -f 2)
       fpath=$(dirname "$ini_path")
 
-      if [ -d "/etc/ld.so.conf" ] && [ -w "$fpath" ]; then 
-        echo "You have write privileges over $fpath" | sed -${E} "s,.*,${SED_RED_YELLOW},"; 
-        printf $RED_YELLOW$ITALIC"$fpath\n"$NC;
+      if [ -d "/etc/ld.so.conf" ] && [ -w "$fpath" ]; then
+        echo "You have write privileges over $fpath" | sed -${E} "s,.*,${SED_RED_YELLOW},";
+        printf $RED_YELLOW"$fpath\n"$NC;
       else
-        printf $GREEN$ITALIC"$fpath\n"$NC;
+        printf $GREEN"$fpath\n"$NC;
       fi
 
       if [ "$(find $fpath -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" ]; then
-        echo "You have write privileges over $(find $fpath -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" | sed -${E} "s,.*,${SED_RED_YELLOW},"; 
+        echo "You have write privileges over $(find $fpath -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" | sed -${E} "s,.*,${SED_RED_YELLOW},";
       fi
 
       for f in $fpath/*; do
-        if [ -w "$f" ]; then 
-          echo "You have write privileges over $f" | sed -${E} "s,.*,${SED_RED_YELLOW},"; 
-          printf $RED_YELLOW$ITALIC"$f\n"$NC;
+        if [ -w "$f" ]; then
+          echo "You have write privileges over $f" | sed -${E} "s,.*,${SED_RED_YELLOW},";
+          printf $RED_YELLOW"$f\n"$NC;
         else
-          printf $GREEN$ITALIC"  $f\n"$NC;
+          printf $GREEN"  $f\n"$NC;
         fi
 
         cat "$f" | grep -v "^#" | while read l2; do
-          if [ -f "$l2" ] && [ -w "$l2" ]; then 
-            echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},"; 
-            printf $RED_YELLOW$ITALIC"  - $l2\n"$NC;
+          if [ -f "$l2" ] && [ -w "$l2" ]; then
+            echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},";
+            printf $RED_YELLOW"  - $l2\n"$NC;
           else
-            echo $ITALIC"  - $l2"$NC | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
+            echo "  - $l2"$NC | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
           fi
         done
       done
@@ -52,10 +61,10 @@ fi
   echo ""
 
 
-  if [ -f "/etc/ld.so.preload" ] && [ -w "/etc/ld.so.preload" ]; then 
-    echo "You have write privileges over /etc/ld.so.preload" | sed -${E} "s,.*,${SED_RED_YELLOW},"; 
+  if [ -f "/etc/ld.so.preload" ] && [ -w "/etc/ld.so.preload" ]; then
+    echo "You have write privileges over /etc/ld.so.preload" | sed -${E} "s,.*,${SED_RED_YELLOW},";
   else
-    printf $ITALIC$GREEN"/etc/ld.so.preload\n"$NC;
+    printf $GREEN"/etc/ld.so.preload\n"$NC;
   fi
   cat /etc/ld.so.preload 2>/dev/null | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
   cat /etc/ld.so.preload 2>/dev/null | while read l; do
