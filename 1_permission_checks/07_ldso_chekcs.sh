@@ -69,11 +69,11 @@ if ! [ "$IAMROOT" ]; then
             # echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},";
             # printf $RED_YELLOW"  - $l2\n"$NC;
           else
-        	echo "$l2"
-        	echo "$l2" | sed -${E} "s,$l2,${SED_GREEN},"
-        	echo "smth" | sed -${E} "s,smth,${SED_RED},"
+#        	echo "$l2"
+ #       	echo "$l2" | sed -${E} "s,$l2,${SED_GREEN},"
+        	echo "$l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},"
 
-            echo "  - $l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
+            echo "$l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
                                # sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},"
           fi
         done
