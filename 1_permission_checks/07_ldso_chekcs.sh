@@ -10,22 +10,24 @@ if ! [ "$IAMROOT" ]; then
     print_green "/etc/ld.so.conf    \n"
   fi
 
- echo "What's inside of   /etc/ld.so.conf:"
+#  echo "What's inside of   /etc/ld.so.conf:"
+  TEMPORARY_CAT_VALUE=$(cat /etc/ld.so.conf 2>/dev/null)
+  small_print "inside of /etc/ld.so.conf: "
+  small_print $TEMPORARY_CAT_VALUE
  # echo ""
 
-echo "1"    # small_print "What's inside of   /etc/ld.so.conf:\n"
-cat /etc/ld.so.conf 2>/dev/null | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
+# echo "1"    # small_print "What's inside of   /etc/ld.so.conf:\n"
+# cat /etc/ld.so.conf 2>/dev/null | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
 
 
 #HERE TRY TO 
-TEMPORARY_CAT_VALUE=$(cat /etc/ld.so.conf 2>/dev/null)
-TEMPORARY_CAT_VALUE2=$(cat /etc/ld.so.conf)
-echo "2"
-print_red_yellow $TEMPORARY_CAT_VALUE
-echo $TEMPORARY_CAT_VALUE
-echo "3"
-print_red_yellow $TEMPORARY_CAT_VALUE2
-echo $TEMPORARY_CAT_VALUE2
+# TEMPORARY_CAT_VALUE2=$(cat /etc/ld.so.conf)
+# echo "2"
+# print_red_yellow $TEMPORARY_CAT_VALUE
+# echo $TEMPORARY_CAT_VALUE
+# echo "3"
+# print_red_yellow $TEMPORARY_CAT_VALUE2
+# echo $TEMPORARY_CAT_VALUE2
 
 
 

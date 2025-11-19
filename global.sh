@@ -16,6 +16,11 @@ print_2title()
 	printf "${BLUE}==================||$1$||=====================${NC}\n"
 }
 
+small_print()
+{
+	printf "${BOLD}
+}
+
 print_red()
 {
     printf "${PRINTF_RED}%s${NC}\n" "$1"
@@ -52,6 +57,7 @@ export PRINTF_BLUE='\033[0;34m'
 export PRINTF_CYAN='\033[0;36m'
 export PRINTF_RED_YELLOW='\033[1;31;43m'  
 export PRINTF_NC='\033[0m' 
+export PRINTF_BOLD='\033[1m'
 
 export PRINTF_BOLD_RED='\033[1;31m'
 export PRINTF_BOLD_GREEN='\033[1;32m'
