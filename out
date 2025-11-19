@@ -1,6 +1,6 @@
 [1;34m==================||ld.so checks!$||=====================[0m
 [1;32m/etc/ld.so.conf    \n[0m
-[1minside of /etc/ld.so.conf: [0m
+[1;34minside of /etc/ld.so.conf: [0m
 [1minclude[0m
 [1;32m/etc/ld.so.conf.d
 [0m[1;32m  /etc/ld.so.conf.d/libc.conf

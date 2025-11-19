@@ -12,7 +12,7 @@ if ! [ "$IAMROOT" ]; then
 
 #  echo "What's inside of   /etc/ld.so.conf:"
   TEMPORARY_CAT_VALUE=$(cat /etc/ld.so.conf 2>/dev/null)
-  small_print "inside of /etc/ld.so.conf: "
+  print_blue "inside of /etc/ld.so.conf: "
   small_print $TEMPORARY_CAT_VALUE
  # echo ""
 

@@ -36,6 +36,11 @@ print_green()
     printf "${PRINTF_BOLD_GREEN}%s${NC}\n" "$1"
 }
 
+print_blue()
+{
+	printf "${PRINTF_BOLD_BLUE}%s${NC}\n" "$1"
+}
+
 export C=$(printf '\033')
 export RED="${C}[1;31m"
 export GREEN="${C}[1;32m"
@@ -62,7 +67,7 @@ export PRINTF_BOLD='\033[1m'
 export PRINTF_BOLD_RED='\033[1;31m'
 export PRINTF_BOLD_GREEN='\033[1;32m'
 export PRINTF_BOLD_YELLOW='\033[1;33m'
-
+export PRINTF_BOLD_BLUE='\033[1;34m'
 
 if echo | sed -r "" >/dev/null 2>&1; then
 	export E="r"
