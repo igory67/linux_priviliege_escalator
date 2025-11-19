@@ -1,27 +1,22 @@
-[1;34m==================||SGID checks! $||=====================[0m
-/aa-exec$|/ab$|/agetty$|/alpine$|/ar$|/aria2c$|/arj$|/arp$|/as$|/ascii-xfr$|/ash$|/aspell$|/atobm$|/awk$|/base32$|/base64$|/basenc$|/basez$|/bash$|/batcat$|/bc$|/bridge$|/busctl$|/busybox$|/byebug$|/bzip2$|/cabal$|/capsh$|/cat$|/chmod$|/choom$|/chown$|/chroot$|/clamscan$|/cmp$|/column$|/comm$|/composer$|/cp$|/cpio$|/cpulimit$|/csh$|/csplit$|/csvtool$|/cupsfilter$|/curl$|/cut$|/dash$|/date$|/dc$|/dd$|/debugfs$|/dialog$|/diff$|/dig$|/distcc$|/dmsetup$|/docker$|/dosbox$|/dvips$|/ed$|/efax$|/elvish$|/emacs$|/env$|/eqn$|/espeak$|/expand$|/expect$|/file$|/find$|/fish$|/flock$|/fmt$|/fold$|/gawk$|/gcore$|/gdb$|/genie$|/genisoimage$|/gimp$|/ginsh$|/git$|/grep$|/gtester$|/gzip$|/hd$|/head$|/hexdump$|/highlight$|/hping3$|/iconv$|/iftop$|/install$|/ionice$|/ip$|/ispell$|/jjs$|/joe$|/join$|/jq$|/jrunscript$ 
--rwxr-sr-x 1 root utmp 15K Aug  5 17:14 /usr/lib/x86_64-linux-gnu/utempter[1;32m/utempter[0m
--rwxr-sr-x 1 root shadow 31K Sep 15 12:37 /usr/sbin[1;32m/unix_chkpwd[0m
--r-xr-sr-x 1 root postdrop 23K Apr  8  2024 /usr/sbin[1;32m/postdrop[0m
--rwxr-sr-x 1 root shadow 27K Sep 15 12:37 /usr/sbin[1;32m/pam_extrausers_chkpwd[0m
--r-xr-sr-x 1 root postdrop 23K Apr  8  2024 /usr/sbin[1;32m/postqueue[0m
--rwxr-sr-x 1 root _ssh 303K Aug 26 13:49 /usr/bin[1;32m/ssh-agent[0m
-[0;31mIMPORTANT: you own this SGID file: -rwsrws--- 1 serveruser1 root 0 Nov 12 14:59 /usr/bin/urownbinomg[0m
-[1;31;43mIMPORTANT: you can edit this SGID file: -rwSr-Srw- 1 root root 0 Nov 12 14:58 /usr/bin/binthatseditable[0m
--rwsr-s--x 1 root root 26 Nov 12 14:50 /usr/bin/binverydangerousoooohsodangerouswow
--rwsr-s--x 1 root root 26 Nov 12 14:50 /usr/bin/binverydangerousoooohsodangerouswow
--rwxr-sr-x 1 root shadow 71K May 30  2024 /usr/bin[1;32m/chage[0m
--rwxr-sr-x 1 root crontab 39K Aug  5 17:14 /usr/bin[1;32m/crontab[0m
--rwxr-sr-x 1 root root 16K Mar 31  2024 /usr/bin[1;32m/dotlock.mailutils[0m
--rwxr-sr-x 1 root shadow 27K May 30  2024 /usr/bin[1;32m/expiry[0m
--rwxr-sr-x 1 root shadow 71K Feb  6  2024 /snap/core22/2133/usr/bin[1;32m/chage[0m
--rwxr-sr-x 1 root shadow 23K Feb  6  2024 /snap/core22/2133/usr/bin[1;32m/expiry[0m
--rwxr-sr-x 1 root 118 287K Apr 11  2025 /snap/core22/2133/usr/bin[1;32m/ssh-agent[0m
--rwxr-sr-x 1 root shadow 23K Jun 12 14:45 /snap/core22/2133/usr/sbin[1;32m/pam_extrausers_chkpwd[0m
--rwxr-sr-x 1 root shadow 27K Jun 12 14:45 /snap/core22/2133/usr/sbin[1;32m/unix_chkpwd[0m
--rwxr-sr-x 1 root shadow 71K Feb  6  2024 /snap/core22/2139/usr/bin[1;32m/chage[0m
--rwxr-sr-x 1 root shadow 23K Feb  6  2024 /snap/core22/2139/usr/bin[1;32m/expiry[0m
--rwxr-sr-x 1 root 118 287K Apr 11  2025 /snap/core22/2139/usr/bin[1;32m/ssh-agent[0m
--rwxr-sr-x 1 root shadow 23K Jun 12 14:45 /snap/core22/2139/usr/sbin[1;32m/pam_extrausers_chkpwd[0m
--rwxr-sr-x 1 root shadow 27K Jun 12 14:45 /snap/core22/2139/usr/sbin[1;32m/unix_chkpwd[0m
+[1;34m==================||ld.so checks!$||=====================[0m
+[1;32m/etc/ld.so.conf    \n[0m
+What's inside of   /etc/ld.so.conf:
+1
+[1;31;103m[0mi[1;31;103m[0mn[1;31;103m[0mc[1;31;103m[0ml[1;31;103m[0mu[1;31;103m[0md[1;31;103m[0me[1;31;103m[0m [1;31;103m[0m/[1;31;103m[0me[1;31;103m[0mt[1;31;103m[0mc[1;31;103m[0m/[1;31;103m[0ml[1;31;103m[0md[1;31;103m[0m.[1;31;103m[0ms[1;31;103m[0mo[1;31;103m[0m.[1;31;103m[0mc[1;31;103m[0mo[1;31;103m[0mn[1;31;103m[0mf[1;31;103m[0m.[1;31;103m[0md[1;31;103m[0m/[1;31;103m[0m*[1;31;103m[0m.[1;31;103m[0mc[1;31;103m[0mo[1;31;103m[0mn[1;31;103m[0mf[1;31;103m[0m
+[1;31;103m[0m
+2
+[1;31;43minclude[0m
+include /etc/ld.so.conf.d/libc.conf /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+3
+[1;31;43minclude[0m
+include /etc/ld.so.conf.d/libc.conf /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+[1;32m/etc/ld.so.conf.d
+[0m[1;32m  /etc/ld.so.conf.d/libc.conf
+[0m[1;31;103m[0m [1;31;103m[0m [1;31;103m[0m-[1;31;103m[0m [1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m1[1;31;103m[0m;[1;31;103m[0m3[1;31;103m[0m2[1;31;103m[0mm[1;31;103m[0m/[1;31;103m[0mu[1;31;103m[0ms[1;31;103m[0mr[1;31;103m[0m/[1;31;103m[0ml[1;31;103m[0mo[1;31;103m[0mc[1;31;103m[0ma[1;31;103m[0ml[1;31;103m[0m/[1;31;103m[0ml[1;31;103m[0mi[1;31;103m[0mb[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m
+[1;32m  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+[0m[1;31;103m[0m [1;31;103m[0m [1;31;103m[0m-[1;31;103m[0m [1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m1[1;31;103m[0m;[1;31;103m[0m3[1;31;103m[0m2[1;31;103m[0mm[1;31;103m[0m/[1;31;103m[0mu[1;31;103m[0ms[1;31;103m[0mr[1;31;103m[0m/[1;31;103m[0ml[1;31;103m[0mo[1;31;103m[0mc[1;31;103m[0ma[1;31;103m[0ml[1;31;103m[0m/[1;31;103m[0ml[1;31;103m[0mi[1;31;103m[0mb[1;31;103m[0m/[1;31;103m[0mx[1;31;103m[0m8[1;31;103m[0m6[1;31;103m[0m_[1;31;103m[0m6[1;31;103m[0m4[1;31;103m[0m-[1;31;103m[0ml[1;31;103m[0mi[1;31;103m[0mn[1;31;103m[0mu[1;31;103m[0mx[1;31;103m[0m-[1;31;103m[0mg[1;31;103m[0mn[1;31;103m[0mu[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m
+[1;31;103m[0m [1;31;103m[0m [1;31;103m[0m-[1;31;103m[0m [1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m1[1;31;103m[0m;[1;31;103m[0m3[1;31;103m[0m2[1;31;103m[0mm[1;31;103m[0m/[1;31;103m[0ml[1;31;103m[0mi[1;31;103m[0mb[1;31;103m[0m/[1;31;103m[0mx[1;31;103m[0m8[1;31;103m[0m6[1;31;103m[0m_[1;31;103m[0m6[1;31;103m[0m4[1;31;103m[0m-[1;31;103m[0ml[1;31;103m[0mi[1;31;103m[0mn[1;31;103m[0mu[1;31;103m[0mx[1;31;103m[0m-[1;31;103m[0mg[1;31;103m[0mn[1;31;103m[0mu[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m
+[1;31;103m[0m [1;31;103m[0m [1;31;103m[0m-[1;31;103m[0m [1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m1[1;31;103m[0m;[1;31;103m[0m3[1;31;103m[0m2[1;31;103m[0mm[1;31;103m[0m/[1;31;103m[0mu[1;31;103m[0ms[1;31;103m[0mr[1;31;103m[0m/[1;31;103m[0ml[1;31;103m[0mi[1;31;103m[0mb[1;31;103m[0m/[1;31;103m[0mx[1;31;103m[0m8[1;31;103m[0m6[1;31;103m[0m_[1;31;103m[0m6[1;31;103m[0m4[1;31;103m[0m-[1;31;103m[0ml[1;31;103m[0mi[1;31;103m[0mn[1;31;103m[0mu[1;31;103m[0mx[1;31;103m[0m-[1;31;103m[0mg[1;31;103m[0mn[1;31;103m[0mu[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m[1;31;103m[0m[[1;31;103m[0m0[1;31;103m[0mm[1;31;103m[0m
 
+[1;32m/etc/ld.so.preload
+[0m

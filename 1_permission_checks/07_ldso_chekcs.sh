@@ -12,13 +12,19 @@ if ! [ "$IAMROOT" ]; then
 
  echo "What's inside of   /etc/ld.so.conf:"
  # echo ""
-    # small_print "What's inside of   /etc/ld.so.conf:\n"
+echo "1"    # small_print "What's inside of   /etc/ld.so.conf:\n"
   cat /etc/ld.so.conf 2>/dev/null | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
 
-#HERE TRY TO 
-$TEMPORARY_CAT_VALUE=cat /etc/ld.so.conf 2>/dev/null
-print_red_yellow $TEMPORARY_CAT_VALUE
 
+#HERE TRY TO 
+TEMPORARY_CAT_VALUE=$(cat /etc/ld.so.conf 2>/dev/null)
+TEMPORARY_CAT_VALUE2=$(cat /etc/ld.so.conf)
+echo "2"
+print_red_yellow $TEMPORARY_CAT_VALUED
+echo $TEMPORARY_CAT_VALUE
+echo "3"
+print_red_yellow $TEMPORARY_CAT_VALUE2
+echo $TEMPORARY_CAT_VALUE2
 
 
 
