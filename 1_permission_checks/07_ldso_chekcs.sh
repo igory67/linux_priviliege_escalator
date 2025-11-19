@@ -50,16 +50,19 @@ if ! [ "$IAMROOT" ]; then
 
       for f in $fpath/*; do
         if [ -w "$f" ]; then
-          echo "You have write privileges over $f" | sed -${E} "s,.*,${SED_RED_YELLOW},";
-          printf $RED_YELLOW"$f\n"$NC;
+          # echo "You have write privileges over $f" | sed -${E} "s,.*,${SED_RED_YELLOW},";
+          print_red_yellow "You have write privileges over $f \n"
+          # printf $RED_YELLOW"$f\n"$NC;
         else
-          printf $GREEN"  $f\n"$NC;
+          print_green "\n"
+          # printf $GREEN"  $f\n"$NC;
         fi
 
         cat "$f" | grep -v "^#" | while read l2; do
           if [ -f "$l2" ] && [ -w "$l2" ]; then
-            echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},";
-            printf $RED_YELLOW"  - $l2\n"$NC;
+            print_red_yellow "You have write privileges over $l2 \n"
+            # echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},";
+            # printf $RED_YELLOW"  - $l2\n"$NC;
           else
             echo "  - $l2"$NC | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
           fi
@@ -71,13 +74,17 @@ if ! [ "$IAMROOT" ]; then
 
 
   if [ -f "/etc/ld.so.preload" ] && [ -w "/etc/ld.so.preload" ]; then
-    echo "You have write privileges over /etc/ld.so.preload" | sed -${E} "s,.*,${SED_RED_YELLOW},";
+    print_red_yellow "You have write privileges over /etc/ld.so.preload"
+    # echo "You have write privileges over /etc/ld.so.preload" | sed -${E} "s,.*,${SED_RED_YELLOW},";
   else
-    printf $GREEN"/etc/ld.so.preload\n"$NC;
+    print_green "/etc/ld.so.preload\n"
+    # printf $GREEN"/etc/ld.so.preload\n"$NC;
   fi
   cat /etc/ld.so.preload 2>/dev/null | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g"
   cat /etc/ld.so.preload 2>/dev/null | while read l; do
-    if [ -f "$l" ] && [ -w "$l" ]; then echo "You have write privileges over $l" | sed -${E} "s,.*,${SED_RED_YELLOW},"; fi
+    if [ -f "$l" ] && [ -w "$l" ]; then 
+      print_red_yellow "You have write privileges over $l"
+      # echo "You have write privileges over $l" | sed -${E} "s,.*,${SED_RED_YELLOW},"; fi
   done
 
 fi
