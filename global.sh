@@ -18,7 +18,7 @@ print_2title()
 
 small_print()
 {
-	printf "${BOLD}
+	printf "${PRINTF_BOLD}%s${NC}\n" "$1"
 }
 
 print_red()
