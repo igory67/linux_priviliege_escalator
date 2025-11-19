@@ -69,6 +69,10 @@ if ! [ "$IAMROOT" ]; then
             # echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},";
             # printf $RED_YELLOW"  - $l2\n"$NC;
           else
+        	echo "$l2"
+        	echo "$l2" | sed -${E} "s,$l2,${SED_GREEN},"
+        	echo "smth" | sed -${E} "s,smth,${SED_RED},"
+
             echo "  - $l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
                                # sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},"
           fi
@@ -90,7 +94,8 @@ if ! [ "$IAMROOT" ]; then
   cat /etc/ld.so.preload 2>/dev/null | while read l; do
     if [ -f "$l" ] && [ -w "$l" ]; then 
       print_red_yellow "You have write privileges over $l"
-      # echo "You have write privileges over $l" | sed -${E} "s,.*,${SED_RED_YELLOW},"; fi
+      # echo "You have write privileges over $l" | sed -${E} "s,.*,${SED_RED_YELLOW},"; 
+fi
   done
 
 fi
