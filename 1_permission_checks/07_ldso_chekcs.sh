@@ -38,13 +38,18 @@ if ! [ "$IAMROOT" ]; then
       fpath=$(dirname "$ini_path")
 
       if [ -d "/etc/ld.so.conf" ] && [ -w "$fpath" ]; then
-        echo "You have write privileges over $fpath" | sed -${E} "s,.*,${SED_RED_YELLOW},";
-        printf $RED_YELLOW"$fpath\n"$NC;
+        print_red_yellow "You have write privileges over $fpath";
+        print_red_yellow "$fpath"
+        # echo "You have write privileges over $fpath" | sed -${E} "s,.*,${SED_RED_YELLOW},";
+        # printf $RED_YELLOW"$fpath\n"$NC;
       else
-        printf $GREEN"$fpath\n"$NC;
+        print_green "$fpath \n"
+        # printf $GREEN"$fpath\n"$NC;
       fi
 
       if [ "$(find $fpath -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" ]; then
+        print_blue "COMPARE THESE"
+        print_red_yellow "You have write privileges over $(find $fpath -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)"
         echo "You have write privileges over $(find $fpath -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" | sed -${E} "s,.*,${SED_RED_YELLOW},";
       fi
 
@@ -64,7 +69,8 @@ if ! [ "$IAMROOT" ]; then
             # echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},";
             # printf $RED_YELLOW"  - $l2\n"$NC;
           else
-            echo "  - $l2"$NC | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
+            echo "  - $l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
+                               # sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},"
           fi
         done
       done
