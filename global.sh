@@ -18,27 +18,27 @@ print_2title()
 
 small_print()
 {
-	printf "${PRINTF_BOLD}%s${NC}\n" "$1"
+	printf "%b" "${PRINTF_BOLD}%s${NC}\n" "$1"
 }
 
 print_red()
 {
-    printf "${PRINTF_RED}%s${NC}\n" "$1"
+    printf "%b" "${PRINTF_RED}%s${NC}\n" "$1"
 }
 
 print_red_yellow() 
 {
-    printf "${PRINTF_RED_YELLOW}%s${NC}\n" "$1"
+    printf "%b"  "${PRINTF_RED_YELLOW}%s${NC}\n" "$1"
 }
 
 print_green() 
 {
-    printf "${PRINTF_BOLD_GREEN}%s${NC}\n" "$1"
+    printf "%b"  "${PRINTF_BOLD_GREEN}%s${NC}\n" "$1"
 }
 
 print_blue()
 {
-	printf "${PRINTF_BOLD_BLUE}%s${NC}\n" "$1"
+	printf "%b"  "${PRINTF_BOLD_BLUE}%s${NC}\n" "$1"
 }
 
 export C=$(printf '\033')
