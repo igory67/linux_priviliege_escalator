@@ -1,19 +1,26 @@
 #!/bin/bash
 
 if ! [ "$IAMROOT" ]; then
-  print_2title "ld.so checks!"
+  print_2title "ld.so checks!#"
 
   if [ -f "/etc/ld.so.conf" ] && [ -w "/etc/ld.so.conf" ]; then
     print_red_yellow "Writable /etc/ld.so.conf \n"
     print_red_yellow "/etc/ld.so.conf \n"
   else
-    print_green "/etc/ld.so.conf    \n"
+	echo ""
+#    print_green "/etc/ld.so.conf"
   fi
 
-#  echo "What's inside of   /etc/ld.so.conf:"
-  TEMPORARY_CAT_VALUE=$(cat /etc/ld.so.conf 2>/dev/null)
-  print_blue "inside of /etc/ld.so.conf: "
-  small_print $TEMPORARY_CAT_VALUE
+	#echo "What's inside of   /etc/ld.so.conf:"
+	TEMPORARY_CAT_VALUE=$(cat /etc/ld.so.conf 2>/dev/null)
+	print_blue "inside of /etc/ld.so.conf: "
+	small_print "$TEMPORARY_CAT_VALUE"
+	tricked_you=$(echo $TEMPORARY_CAT_VALUE)
+#	small_print "$TEMPORARY_CAT_VALUE"
+#	echo $TEMPORARY_CAT_VALUE
+	small_print "$tricked_you"
+echo ""
+
  # echo ""
 
 # echo "1"    # small_print "What's inside of   /etc/ld.so.conf:\n"
@@ -43,7 +50,7 @@ if ! [ "$IAMROOT" ]; then
         # echo "You have write privileges over $fpath" | sed -${E} "s,.*,${SED_RED_YELLOW},";
         # printf $RED_YELLOW"$fpath\n"$NC;
       else
-        print_green "$fpath \n"
+        print_green "$fpath "
         # printf $GREEN"$fpath\n"$NC;
       fi
 
@@ -56,16 +63,16 @@ if ! [ "$IAMROOT" ]; then
       for f in $fpath/*; do
         if [ -w "$f" ]; then
           # echo "You have write privileges over $f" | sed -${E} "s,.*,${SED_RED_YELLOW},";
-          print_red_yellow "You have write privileges over $f \n"
+          print_red_yellow "You have write privileges over $f "
           # printf $RED_YELLOW"$f\n"$NC;
         else
-          print_green "\n"
-          # printf $GREEN"  $f\n"$NC;
+          print_green "$f"
+#           printf $GREEN"  $f\n"$NC;
         fi
 
         cat "$f" | grep -v "^#" | while read l2; do
           if [ -f "$l2" ] && [ -w "$l2" ]; then
-            print_red_yellow "You have write privileges over $l2 \n"
+            print_red_yellow "You have write privileges over $l2 "
             # echo "You have write privileges over $l2" | sed -${E} "s,.*,${SED_RED_YELLOW},";
             # printf $RED_YELLOW"  - $l2\n"$NC;
           else
@@ -73,7 +80,7 @@ if ! [ "$IAMROOT" ]; then
  #       	echo "$l2" | sed -${E} "s,$l2,${SED_GREEN},"
         	echo "$l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},"
 
-            echo "$l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
+#            echo "$l2" | sed -${E} "s,$l2,${SED_GREEN}," | sed -${E} "s,$Wfolders,${SED_RED_YELLOW},g";
                                # sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},"
           fi
         done
