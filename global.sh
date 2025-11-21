@@ -159,7 +159,7 @@ check_critical_root_path()
 		print_red_yellow "You can write here!"
 		print_red_yellow "$folder_path"
 	fi
-	echo "$folder_path"
+	# echo "$folder_path"
 #	echo $folder_path
 
 	writable_files=$(find "$folder_path" -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)
