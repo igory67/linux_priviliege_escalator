@@ -172,7 +172,8 @@ check_critical_root_path()
 	unowned_files=$(find "$folder_path" -type f -not -user root 2>/dev/null)
 	# echo "$unowned_files"
 	if [ -n "$unowned_files" ]; then
-		small_print "The following files aren't owned by root: $unowned_files"
+		small_print "Files not owned by root!"
+		small_print "$unowned_files"
     fi
 }
 
