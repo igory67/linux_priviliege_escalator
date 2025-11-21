@@ -155,6 +155,8 @@ check_critical_root_path()
 		echo "You have write privileges over $folder_path" \
 		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
 	fi
+	echo "$folder_path"
+#	echo $folder_path
 
 	writable_files=$(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)
 	echo "$writable_files"
