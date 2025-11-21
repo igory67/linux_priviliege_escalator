@@ -181,7 +181,7 @@ check_critical_root_path()
 		small_print "The following files aren't owned by root: $unowned_files"
 		echo "The following files aren't owned by root: $(find "$folder_path" -type f -not -user root 2>/dev/null)"; 
     fi
-# }
+}
 
 # check_critical_root_path() {
 #     folder_path="$1"
