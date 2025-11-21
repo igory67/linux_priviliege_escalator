@@ -1,18 +1,33 @@
-[1;34m==================||Searching root owned files in homes up to 30$||=====================[0m
+[1;34m==================||Searching root owned files in homes up to 40||=====================[0m
+/home/ /root/ /var/www 
+[1mfound files:[0m
+-rwxr-xr-x 1 root root 960799 Sep  8 12:27 /home/[1;96m[1;31mserveruser1[0m[0m/linpeas.sh
+split
+-rwxr-xr-x 1 root root 960799 Sep  8 12:27 /home/[1;96m[1;31mserveruser1[0m[0m/linpeas.sh
+-rwxr-xr-x 1 root root 114 Sep 12 12:10 /home/[1;96m[1;31mserveruser1[0m[0m/lintest.sh
+split
+-rwxr-xr-x 1 root root 114 Sep 12 12:10 /home/[1;96m[1;31mserveruser1[0m[0m/lintest.sh
+-rw-r--r-- 1 root root 613 Aug 25 14:07 /var/www/web2.mydomain.local/html/index.html
+split
+-rw-r--r-- 1 root root 613 Aug 25 14:07 /var/www/web2.mydomain.local/html/index.html
+-rw-r--r-- 1 root root 615 Nov  1 06:54 /var/www/html/index.nginx-debian.html
+split
+-rw-r--r-- 1 root root 615 Nov  1 06:54 /var/www/html/index.nginx-debian.html
+-rw-r--r-- 1 root root 704 Aug 26 11:08 /var/www/default/html/index.html
+split
+-rw-r--r-- 1 root root 704 Aug 26 11:08 /var/www/default/html/index.html
+-rw-r--r-- 1 root root 31 Aug 25 14:07 /var/www/web1.mydomain.local/html/index.html
+split
+-rw-r--r-- 1 root root 31 Aug 25 14:07 /var/www/web1.mydomain.local/html/index.html
+[1mdirectories, just for reference:[0m
 /home/
-/home/[1;96m[1;31mserveruser1[0m[0m/linpeas.sh
-/home/[1;96m[1;31mserveruser1[0m[0m/lintest.sh
 /root/
 /var/www
 /var/www/web2.mydomain.local
 /var/www/web2.mydomain.local/html
-/var/www/web2.mydomain.local/html/index.html
 /var/www/html
-/var/www/html/index.nginx-debian.html
 /var/www/default
 /var/www/default/html
-/var/www/default/html/index.html
 /var/www/web1.mydomain.local
 /var/www/web1.mydomain.local/html
-/var/www/web1.mydomain.local/html/index.html
 
