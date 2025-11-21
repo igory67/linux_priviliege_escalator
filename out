@@ -1,16 +1,13 @@
-[1;34m==================||ld.so checks!#$||=====================[0m
+[1;34m==================||Scripts in /etc/profile.d/$||=====================[0m
+total 40
+drwxr-xr-x   2 root root 4096 Aug  5 17:14 .
+drwxr-xr-x 116 root root 4096 Nov 19 21:20 ..
+-rw-r--r--   1 root root   96 Apr 22  2024 [1;32m01-locale-fix.sh[0m
+-rw-r--r--   1 root root  835 May 21  2025 [1;32mapps-bin-path.sh[0m
+-rw-r--r--   1 root root  726 Aug  5 17:14 [1;32mbash_completion.sh[0m
+-rw-r--r--   1 root root 1107 Mar 31  2024 [1;32mgawk.csh[0m
+-rw-r--r--   1 root root  757 Mar 31  2024 [1;32mgawk.sh[0m
+-rw-r--r--   1 root root 1557 Aug  5 17:14 [1;32mZ97-byobu.sh[0m
+-rwxr-xr-x   1 root root  841 Jun 24 21:14 [1;32mZ99-cloudinit-warnings.sh[0m
+-rwxr-xr-x   1 root root 3396 Jun 24 21:14 [1;32mZ99-cloud-locale-test.sh[0m
 
-[1;34minside of /etc/ld.so.conf: [0m
-[1minclude /etc/ld.so.conf.d/*.conf[0m
-[1minclude /etc/ld.so.conf.d/libc.conf /etc/ld.so.conf.d/wconf.conf /etc/ld.so.conf.d/x86_64-linux-gnu.conf[0m
-
-[1;32m/etc/ld.so.conf.d [0m
-[1;32m/etc/ld.so.conf.d/libc.conf[0m
-[1;31;103m[0m[1;32m/usr/local/lib[0m
-[1;31;43mYou have write privileges over /etc/ld.so.conf.d/wconf.conf [0m
-[1;32m/etc/ld.so.conf.d/x86_64-linux-gnu.conf[0m
-[1;31;103m[0m[1;32m/usr/local/lib/x86_64-linux-gnu[0m
-[1;31;103m[0m[1;32m/lib/x86_64-linux-gnu[0m
-[1;31;103m[0m[1;32m/usr/lib/x86_64-linux-gnu[0m
-
-[1;32m/etc/ld.so.preload\n[0m
