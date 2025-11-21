@@ -144,39 +144,65 @@ export capsB="=ep|cap_chown|cap_former|cap_setfcap|cap_dac_override|cap_dac_read
 #1/08
 profiledG="01-locale-fix.sh|256term.csh|256term.sh|abrt-console-notification.sh|appmenu-qt5.sh|apps-bin-path.sh|bash_completion.sh|cedilla-portuguese.sh|colorgrep.csh|colorgrep.sh|colorls.csh|colorls.sh|colorxzgrep.csh|colorxzgrep.sh|colorzgrep.csh|colorzgrep.sh|csh.local|cursor.sh|gawk.csh|gawk.sh|im-config_wayland.sh|kali.sh|lang.csh|lang.sh|less.csh|less.sh|flatpak.sh|sh.local|vim.csh|vim.sh|vte.csh|vte-2.91.sh|which2.csh|which2.sh|xauthority.sh|Z97-byobu.sh|xdg_dirs_desktop_session.sh|Z99-cloudinit-warnings.sh|Z99-cloud-locale-test.sh"
 
-check_critical_root_path()
-{
-	folder_path="$1"
+# check_critical_root_path()
+# {
+#     folder_path="$1"
+    
+#     # Check write permissions on the path itself
+#     if [ -w "$folder_path" ]; then
+# 		print_red_yellow "You can write here!"
+# 		print_red_yellow "$folder_path"
 
-	if [ -w "$folder_path" ]; then
-		print_red_yellow "You can write here!"
-		print_red_yellow "$folder_path"
+# 		echo "You have write privileges over $folder_path" \
+# 		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
+# 	fi
+# 	echo "$folder_path"
+# #	echo $folder_path
 
-		echo "You have write privileges over $folder_path" \
-		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
-	fi
-	echo "$folder_path"
-#	echo $folder_path
-
-	writable_files=$(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)
-	echo "$writable_files"
-	if [ "$writable_files" ]; then
+# 	writable_files=$(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)
+# 	echo "$writable_files"
+# 	if [ "$writable_files" ]; then
 		
-		print_red_yellow "You can write here!"
-		print_red_yellow "$writable_files"
-		echo "You have write privileges over $(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')')" \
-		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
-	fi
+# 		print_red_yellow "You can write here!"
+# 		print_red_yellow "$writable_files"
+# 		echo "You have write privileges over $(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')')" \
+# 		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
+# 	fi
 	
-	unowned_files=$(find $folder_path -type f -not -user root 2>/dev/null)
-	echo "$unowned_files"
-	if [ "$unowned_files" ]; then
-		small_print "The following files aren't owned by root: $unowned_files"
-		echo "The following files aren't owned by root: $(find $folder_path -type f -not -user root 2>/dev/null)"; 
-	fi
+# 	unowned_files=$(find $folder_path -type f -not -user root 2>/dev/null)
+# 	echo "$unowned_files"
+# 	if [ "$unowned_files" ]; then
+# 		small_print "The following files aren't owned by root: $unowned_files"
+# 		echo "The following files aren't owned by root: $(find $folder_path -type f -not -user root 2>/dev/null)"; 
+#     fi
+# }
+
+check_critical_root_path() {
+    folder_path="$1"
+    
+    # Check write permissions on the path itself
+    if [ -w "$folder_path" ]; then
+        print_red_yellow "You have write privileges over: $folder_path"
+    fi
+
+    # Check for writable files - PROPERLY QUOTED!
+    writable_files=$(find "$folder_path" -type f \( -user "$USER" -o -perm -o=w \) 2>/dev/null)
+    if [ -n "$writable_files" ]; then
+        print_red_yellow "You have write privileges over these files:"
+        echo "$writable_files" | while read -r file; do
+            print_red_yellow "  $file"
+        done
+    fi
+
+    # Check for non-root owned files
+    non_root_files=$(find "$folder_path" -type f -not -user root 2>/dev/null)
+    if [ -n "$non_root_files" ]; then
+        small_print "Files not owned by root:"
+        echo "$non_root_files" | while read -r file; do
+            print_red "  $file"
+        done
+    fi
 }
-
-
 
 #start with " /", end with "$", divide path and vulnversion "%". SPACE IS ONLY ALLOWED AT BEGINNING, DONT USE IT IN VULN DESCRIPTION
 export sidB="/apache2$%Read_root_passwd__apache2_-f_/etc/shadow\(CVE-2019-0211\)\
