@@ -163,14 +163,14 @@ check_critical_root_path()
 #	echo $folder_path
 
 	writable_files=$(find "$folder_path" -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)
-	echo "$writable_files"
+	# echo "$writable_files"
 	if [ -n "$writable_files" ]; then
 		print_red_yellow "You can write here!"
 		print_red_yellow "$writable_files"
 	fi
 	
 	unowned_files=$(find "$folder_path" -type f -not -user root 2>/dev/null)
-	echo "$unowned_files"
+	# echo "$unowned_files"
 	if [ -n "$unowned_files" ]; then
 		small_print "The following files aren't owned by root: $unowned_files"
     fi
