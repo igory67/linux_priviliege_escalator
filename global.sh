@@ -148,25 +148,26 @@ check_critical_root_path()
 {
 	folder_path="$1"
 
-	if [ -w "$folder_path" ]; 
+	if [ -w "$folder_path" ]; then
 		print_red_yellow "You can write here!"
 		print_red_yellow "$folder_path"
 
-		then echo "You have write privileges over $folder_path" \
+		echo "You have write privileges over $folder_path" \
 		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
 	fi
 
-	if [ "$(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" ]; 
+	if [ "$(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" ]; then
+		
 		print_red_yellow "You can write here!"
 		print_red_yellow($folder_path)
 		
-		then echo "You have write privileges over $(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')')" \
+		echo "You have write privileges over $(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')')" \
 		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
 	fi
 	
-	if [ "$(find $folder_path -type f -not -user root 2>/dev/null)" ]; 
+	if [ "$(find $folder_path -type f -not -user root 2>/dev/null)" ]; then
 		small_print "The following files aren't owned by root: $folder_path"
-		then echo "The following files aren't owned by root: $(find $folder_path -type f -not -user root 2>/dev/null)"; 
+		echo "The following files aren't owned by root: $(find $folder_path -type f -not -user root 2>/dev/null)"; 
 	fi
 }
 
