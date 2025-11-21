@@ -1,19 +1,18 @@
-[1;34m==================||Scripts in /etc/profile.d/$||=====================[0m
-total 40
-drwxr-xr-x   2 root root 4096 Aug  5 17:14 .
-drwxr-xr-x 116 root root 4096 Nov 19 21:20 ..
--rw-r--rw-   1 root root   96 Apr 22  2024 [1;32m01-locale-fix.sh[0m
--rw-r--r--   1 root root  835 May 21  2025 [1;32mapps-bin-path.sh[0m
--rw-r--r--   1 root root  726 Aug  5 17:14 [1;32mbash_completion.sh[0m
--rw-r--r--   1 root root 1107 Mar 31  2024 [1;32mgawk.csh[0m
--rw-r--r--   1 root root  757 Mar 31  2024 [1;32mgawk.sh[0m
--rw-r--r--   1 root root 1557 Aug  5 17:14 [1;32mZ97-byobu.sh[0m
--rwxr-xr-x   1 root root  841 Jun 24 21:14 [1;32mZ99-cloudinit-warnings.sh[0m
--rwxr-xr-x   1 root root 3396 Jun 24 21:14 [1;32mZ99-cloud-locale-test.sh[0m
-/etc/profile/
-
-
-/etc/profile.d/
-
-
+[1;34m==================||Searching root owned files in homes up to 30$||=====================[0m
+/home/
+/home/[1;96m[1;31mserveruser1[0m[0m/linpeas.sh
+/home/[1;96m[1;31mserveruser1[0m[0m/lintest.sh
+/root/
+/var/www
+/var/www/web2.mydomain.local
+/var/www/web2.mydomain.local/html
+/var/www/web2.mydomain.local/html/index.html
+/var/www/html
+/var/www/html/index.nginx-debian.html
+/var/www/default
+/var/www/default/html
+/var/www/default/html/index.html
+/var/www/web1.mydomain.local
+/var/www/web1.mydomain.local/html
+/var/www/web1.mydomain.local/html/index.html
 
