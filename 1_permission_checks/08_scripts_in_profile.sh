@@ -6,7 +6,7 @@ print_2title "Scripts in /etc/profile.d/" #""The file /etc/profile and the files
 if ! [ "$IAMROOT" ]; then 
   (ls -la /etc/profile.d/ 2>/dev/null | sed -${E} "s,$profiledG,${SED_GREEN},") \
   || echo_not_found "/etc/profile.d/" 
-  check_critical_root_path "/etc/profile"
+  check_critical_root_path "/etc/profile/"
   check_critical_root_path "/etc/profile.d/"
 fi
   
