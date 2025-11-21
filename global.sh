@@ -144,6 +144,33 @@ export capsB="=ep|cap_chown|cap_former|cap_setfcap|cap_dac_override|cap_dac_read
 #1/08
 profiledG="01-locale-fix.sh|256term.csh|256term.sh|abrt-console-notification.sh|appmenu-qt5.sh|apps-bin-path.sh|bash_completion.sh|cedilla-portuguese.sh|colorgrep.csh|colorgrep.sh|colorls.csh|colorls.sh|colorxzgrep.csh|colorxzgrep.sh|colorzgrep.csh|colorzgrep.sh|csh.local|cursor.sh|gawk.csh|gawk.sh|im-config_wayland.sh|kali.sh|lang.csh|lang.sh|less.csh|less.sh|flatpak.sh|sh.local|vim.csh|vim.sh|vte.csh|vte-2.91.sh|which2.csh|which2.sh|xauthority.sh|Z97-byobu.sh|xdg_dirs_desktop_session.sh|Z99-cloudinit-warnings.sh|Z99-cloud-locale-test.sh"
 
+check_critial_root_path()
+{
+	folder_path="$1"
+
+	if [ -w "$folder_path" ]; 
+		print_red_yellow "You can write here!"
+		print_red_yellow "$folder_path"
+
+		then echo "You have write privileges over $folder_path" \
+		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
+	fi
+
+	if [ "$(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" ]; 
+		print_red_yellow "You can write here!"
+		print_red_yellow($folder_path)
+		
+		then echo "You have write privileges over $(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')')" \
+		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
+	fi
+	
+	if [ "$(find $folder_path -type f -not -user root 2>/dev/null)" ]; 
+		small_print "The following files aren't owned by root: $folder_path"
+		then echo "The following files aren't owned by root: $(find $folder_path -type f -not -user root 2>/dev/null)"; 
+	fi
+}
+
+
 
 #start with " /", end with "$", divide path and vulnversion "%". SPACE IS ONLY ALLOWED AT BEGINNING, DONT USE IT IN VULN DESCRIPTION
 export sidB="/apache2$%Read_root_passwd__apache2_-f_/etc/shadow\(CVE-2019-0211\)\
