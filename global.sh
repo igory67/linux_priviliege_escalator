@@ -155,31 +155,24 @@ check_critical_root_path()
     folder_path="$1"
     
     # Check write permissions on the path itself
-    if [ -w "$folder_path" ]; then
+    if [ -n -w "$folder_path" ]; then
 		print_red_yellow "You can write here!"
 		print_red_yellow "$folder_path"
-
-		echo "You have write privileges over $folder_path" \
-		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
 	fi
 	echo "$folder_path"
 #	echo $folder_path
 
 	writable_files=$(find "$folder_path" -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)
 	echo "$writable_files"
-	if [ "$writable_files" ]; then
-		
+	if [ -n "$writable_files" ]; then
 		print_red_yellow "You can write here!"
 		print_red_yellow "$writable_files"
-		echo "You have write privileges over $(find "$folder_path" -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')')" \
-		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
 	fi
 	
 	unowned_files=$(find "$folder_path" -type f -not -user root 2>/dev/null)
 	echo "$unowned_files"
-	if [ "$unowned_files" ]; then
+	if [ -n "$unowned_files" ]; then
 		small_print "The following files aren't owned by root: $unowned_files"
-		echo "The following files aren't owned by root: $(find "$folder_path" -type f -not -user root 2>/dev/null)"; 
     fi
 }
 
