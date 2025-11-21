@@ -155,7 +155,7 @@ check_critical_root_path()
     folder_path="$1"
     
     # Check write permissions on the path itself
-    if [ -n -w "$folder_path" ]; then
+    if [ -w "$folder_path" ]; then
 		print_red_yellow "You can write here!"
 		print_red_yellow "$folder_path"
 	fi
