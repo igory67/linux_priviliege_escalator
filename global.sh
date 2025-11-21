@@ -55,6 +55,7 @@ export SED_YELLOW="${C}[1;33m&${C}[0m"
 export SED_BLUE="${C}[1;34m&${C}[0m"
 export SED_CYAN="${C}[0;36m&${C}[0m"
 export SED_RED_YELLOW="${C}[1;31;103m&${C}[0m"
+export SED_LIGHT_CYAN="${C}[1;96m&${C}[0m"
  
 export PRINTF_RED='\033[0;31m'
 export PRINTF_GREEN='\033[0;32m'
