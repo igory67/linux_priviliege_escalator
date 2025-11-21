@@ -7,10 +7,12 @@ found_files=$(find -type f $HOMESEARCH -user root 2>/dev/null)
 found_dirs=$(find -type d $HOMESEARCH -user root 2>/dev/null)
 
 for f in $found_files; do
-    ll $f | head -n 40 | sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},g" | sed "s,$USER,${SED_RED},g"
+    ls -la $f | head -n 40 | sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},g" | sed "s,$USER,${SED_RED},g"
+done;
 
 for d in $found_dirs; do
     echo "$d" | head -n 40 | sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},g" | sed "s,$USER,${SED_RED},g"
+done;
 #  "found_files" | head -n 40 | sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},g" | sed "s,$USER,${SED_RED},g"
 
 
