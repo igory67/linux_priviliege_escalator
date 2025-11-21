@@ -159,7 +159,7 @@ check_critical_root_path()
 	if [ "$(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')' 2>/dev/null)" ]; then
 		
 		print_red_yellow "You can write here!"
-		print_red_yellow($folder_path)
+		print_red_yellow "$folder_path"
 		
 		echo "You have write privileges over $(find $folder_path -type f '(' '(' -user $USER ')' -or '(' -perm -o=w ')' -or  '(' -perm -g=w -and '(' $wgroups ')' ')' ')')" \
 		| sed -${E} "s,.*,${SED_RED_YELLOW},"; 
