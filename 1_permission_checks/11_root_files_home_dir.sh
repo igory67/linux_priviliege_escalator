@@ -21,7 +21,7 @@ done;
 
 echo ""
 print_blue "directories, just for reference:"
-echo""
+echo ""
 
 for d in $found_dirs; do
     echo "$d" | head -n 40 | sed -${E} "s,$sh_usrs,${SED_LIGHT_CYAN},g" | sed "s,$USER,${SED_RED},g"
