@@ -41,6 +41,11 @@ print_blue()
 {
 	printf   "${PRINTF_BOLD_BLUE}%s${NC}\n" "$1"
 }
+print_cyan()
+{
+	printf   "${PRINTF_CYAN_BLUE}%s${NC}\n" "$1"
+
+}
 
 export C=$(printf '\033')
 export RED="${C}[1;31m"

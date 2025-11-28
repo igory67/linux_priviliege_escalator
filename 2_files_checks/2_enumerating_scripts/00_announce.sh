@@ -1,0 +1,6 @@
+#!/bin/bash
+
+print_cyan "THIS IS THE FILES_CHECK BLOCK"
+print_2title "THIS IS THE FILES_CHECK BLOCK"
+print_cyan "THIS IS THE FILES_CHECK BLOCK"
+
