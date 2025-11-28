@@ -59,6 +59,6 @@ else
 fi
 
 ##-- IPF) Read root dir
-print_list "Can I read root folder? .............. "
-(ls -al /root/ 2>/dev/null | grep -vi "total 0") || echo_no
+print_small_title "trying to read root folder "
+(ls -la /root/ 2>/dev/null | grep -iv "total 0") || echo_not_found "readable root folder"
 echo ""
