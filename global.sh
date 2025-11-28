@@ -13,12 +13,17 @@ echo_not_found()
 print_2title()
 {
 #	echo\ "=================== $1 =================="
-	printf "${BLUE}==================||$1||=====================${NC}\n"
+	printf "\n${BLUE}==================||$1||=====================${NC}\n\n"
 }
 
 small_print()
 {
 	printf "${PRINTF_BOLD}%s${NC}\n" "$1"
+}
+
+print_small_title()
+{
+	printf   "\n==${PRINTF_BOLD_BLUE}==%s==${NC}==\n" "$1"
 }
 
 print_red()

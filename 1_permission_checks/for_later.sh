@@ -5,8 +5,7 @@ echo ""
 
 print_blue "Looking for hashes inside password files: "
 # if grep -qv '^[^:]*:[x\*\!]\|^#\|^$' /etc/passwd /etc/master.passwd /etc/group 2>/dev/null; 
-if grep -qv '^[^:]*:[x\*]\|^#\|^$' /etc/passwd /etc/pwd.db /etc/master.passwd /etc/group 2>/dev/null; 
-then
+if grep -qv '^[^:]*:[x\*]\|^#\|^$' /etc/passwd /etc/pwd.db /etc/master.passwd /etc/group 2>/dev/null; then
   print_blue "grep version"
   grep -v '^[^:]*:[x\*]\|^#\|^$' /etc/passwd /etc/pwd.db /etc/master.passwd /etc/group 2>/dev/null | sed -${E} "s,.*,${SED_RED},"
   print_blue "print version"
@@ -17,26 +16,24 @@ fi
 
 
 print_blue "writable password files: "
-if [ -w "/etc/passwd" ]; 
-then 
-  echo "/etc/passwd is writable" | sed -${E} "s,.*,${SED_RED_YELLOW},"
-elif [ -w "/etc/pwd.db" ]; 
-then 
-  echo "/etc/pwd.db is writable" | sed -${E} "s,.*,${SED_RED_YELLOW},"
-elif [ -w "/etc/master.passwd" ]; 
-then 
-  echo "/etc/master.passwd is writable" | sed -${E} "s,.*,${SED_RED_YELLOW},"
-else 
-  echo_not_found "writable password files"
+if [ -w "/etc/passwd" ]; then 
+  print_red_yellow "/etc/passwd is writable! quick win ig"
 fi
+if [ -w "/etc/pwd.db" ]; then 
+  print_red_yellow "/etc/pwd.db is writable! quick win ig"
+fi
+if [ -w "/etc/master.passwd" ]; then 
+  print_red_yellow "/etc/master.passwd is writable! quick win ig"
+fi
+echo_not_found "writable password files (unless you see red_yellow prints saying otherwise)"
 
-##-- IPF) Credentials in fstab
 print_list "Credentials in fstab/mtab? ........... "
-if grep -qE "(user|username|login|pass|password|pw|credentials)[=:]" /etc/fstab /etc/mtab 2>/dev/null; then grep -E "(user|username|login|pass|password|pw|credentials)[=:]" /etc/fstab /etc/mtab 2>/dev/null | sed -${E} "s,.*,${SED_RED},"
+if grep -qE "(user|username|login|pass|password|pw|credentials)[=:]" /etc/fstab /etc/mtab 2>/dev/null; then
+ grep -E "(user|username|login|pass|password|pw|credentials)[=:]" /etc/fstab /etc/mtab 2>/dev/null | sed -${E} "s,.*,${SED_RED},"
 else echo_no
 fi
 
-##-- IPF) Read shadow files
+
 print_list "Can I read shadow files? ............. "
 if [ "$(cat /etc/shadow /etc/shadow- /etc/shadow~ /etc/gshadow /etc/gshadow- /etc/master.passwd /etc/spwd.db 2>/dev/null)" ]; then cat /etc/shadow /etc/shadow- /etc/shadow~ /etc/gshadow /etc/gshadow- /etc/master.passwd /etc/spwd.db 2>/dev/null | sed -${E} "s,.*,${SED_RED},"
 else echo_no
