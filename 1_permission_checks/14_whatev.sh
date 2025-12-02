@@ -1,4 +1,4 @@
-
+print_2_title "THIS IS 1ST"
 if ! [ "$IAMROOT" ]; then
   print_2title "Interesting writable files owned by me or writable by everyone (not in Home) (max 200)"
   #In the next file, you need to specify type "d" and "f" to avoid fake link files apparently writable by all
