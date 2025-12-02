@@ -1,3 +1,4 @@
+print_2title "THIS IS 2ND"
 if ! [ "$IAMROOT" ]; then
   print_2title "Writable files analysis"
   

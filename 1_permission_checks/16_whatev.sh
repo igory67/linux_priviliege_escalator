@@ -1,3 +1,4 @@
+print_2title "this is 3rd"
 if ! [ "$IAMROOT" ]; then
   print_2title "Interesting writable files owned by me or writable by everyone (not in Home) (max 200)"
   print_info "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#writable-files"

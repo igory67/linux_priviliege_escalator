@@ -1,9 +1,3 @@
-[1;34m==================||Looking for passwords in all files!||=====================[0m
 
-[1;34mLooking for hashes inside password files: [0m
-[1;34mgrep version[0m
-[1;31m/etc/group:varvarvwas:djafdsifas:228228:serveruser1[0m
-[1;31m/etc/group:qweqwe:qweqwe:115:qwe[0m
-[1;34mprint version[0m
-[0;31m/etc/group:varvarvwas:djafdsifas:228228:serveruser1
-/etc/group:qweqwe:qweqwe:115:qwe[0m
+[1;34m==================||Interesting writable files owned by me or writable by everyone (not in Home) (max 200)||=====================[0m
+
