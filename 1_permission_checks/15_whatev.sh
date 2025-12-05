@@ -1,27 +1,48 @@
 #!/bin/bash
 
-print_2title "Interesting writable files owned by me or writable by everyone (not in Home)"
+print_2title "Interesting writable files (not in Home)"
 
 if ! [ "$IAMROOT" ]; then
-  # Find files (remove the preliminary small_print!)
-  # obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
-  # | grep -Ev "$notExtensions|run|snap" | sort | uniq | head -n 200)
-  obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
-  | grep -Ev "$notExtensions|run|snap" \
-  | sort \
-  | uniq \
-| head -n 200)
-  # | awk -F/ '{line_init=$0; if (!cont){ cont=0 }; $NF=""; act=$0; if (act == | pre){(cont += 1)} else {cont=0}; if (cont < 5){ print line_init; } if (cont ==  | "5"){print "#)You_can_write_even_more_files_inside_last_directory\n"}; pre=act }'\
+  # Find files with AWK directory limiting
+  obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' \
+    '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' \
+    ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
+    | grep -Ev "$notExtensions|run|snap" \
+    | sort | uniq \
+    | awk -F/ '{
+        # Get directory path by removing filename
+        dir=$0
+        sub(/\/[^\/]+$/, "", dir)
+        
+        # Count files in this directory
+        count[dir]++
+        
+        # Print first 5 files per directory
+        if (count[dir] <= 5) {
+          print $0
+        }
+        # On 6th file, print a message
+        else if (count[dir] == 6) {
+          print "# Many more files in: " dir
+        }
+        # Files 7+ are silently skipped
+      }' \
+    | head -n 200)
+  
   if [ -n "$obmowbe" ]; then
     echo "$obmowbe" | while read line; do
-      # Check if world-writable (high risk!)
+      # Skip the directory messages (they start with #)
+      if [[ "$line" == "# "* ]]; then
+        print_cyan "$line"
+        continue
+      fi
+      
+      # Color based on your writeVB/writeB patterns
       if echo "$line" | grep -qE "$writeVB"; then
         print_red_yellow "$line"
-      # Check if just owned by you (medium risk)
       elif echo "$line" | grep -qE "$writeB"; then
         print_red "$line"
       else
-        # Regular writable files
         echo "$line"
       fi
     done

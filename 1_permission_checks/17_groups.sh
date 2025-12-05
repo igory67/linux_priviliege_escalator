@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if ! [ "$IAMROOT" ]; then
   print_2title "Interesting GROUP writable files (not in Home) (max 200)"
   for g in $(groups); do
@@ -16,3 +18,5 @@ if ! [ "$IAMROOT" ]; then
   done
   echo ""
 fi
+
+echo ""

@@ -9,9 +9,10 @@ if ! [ "$IAMROOT" ]; then
   | grep -Ev "$notExtensions|run|snap" \
   | sort \
   | uniq \
-  | awk -F/ '{line_init=$0; if (!cont){ cont=0 }; $NF=""; act=$0; if (act == | pre){(cont += 1)} else {cont=0}; if (cont < 5){ print line_init; } if (cont ==  | "5"){print "#)You_can_write_even_more_files_inside_last_directory\n"}; pre=act }'\
 | head -n 200)
-#подумать про это авк, пока странно кажется
+  | awk -F/ '{line_init=$0;
+   if (!cont){ cont=0 }; $NF=""; act=$0; if (act == | pre){(cont += 1)} else {cont=0}; if (cont < 5){ print line_init; } if (cont ==  | "5"){print "#)You_can_write_even_more_files_inside_last_directory\n"}; pre=act }'\
+#  подумать про это авк, пока странно кажется
 #  | head -n 200)
 	# small_print "$obmowbe"
 

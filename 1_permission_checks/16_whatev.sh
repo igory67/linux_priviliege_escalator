@@ -3,17 +3,12 @@
 if ! [ "$IAMROOT" ]; then
 
 print_2title "Interesting writable files (not in Home)"
+  #ombowbe это название болезни автора (owned by me or writable by everyone)
   obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' \
     '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' \
     ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
     | grep -Ev "$notExtensions|run|snap" \
-    | awk -F/ '{
-        dir=$0; 
-        sub(/\/[^\/]+$/, "", dir);  # Remove filename, keep directory
-        count[dir]++
-        if (count[dir] <= 5) print $0
-        else if (count[dir] == 6) print "# Many more files in: " dir
-    }' \
+    | a   
     | head -n 200)
   
   if [ -n "$obmowbe" ]; then
