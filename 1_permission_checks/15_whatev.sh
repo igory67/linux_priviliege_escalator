@@ -7,7 +7,7 @@ if ! [ "$IAMROOT" ]; then
   obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' \
     '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' \
     ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
-    | grep -Ev "$notExtensions" | sort | uniq | head -n 200)
+    | grep -Ev "$notExtensions|run|snap" | sort | uniq | head -n 200)
   
   if [ -n "$obmowbe" ]; then
     echo "$obmowbe" | while read line; do
