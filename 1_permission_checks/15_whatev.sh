@@ -4,11 +4,14 @@ print_2title "Interesting writable files owned by me or writable by everyone (no
 
 if ! [ "$IAMROOT" ]; then
   # Find files (remove the preliminary small_print!)
-  obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' \
-    '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' \
-    ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
-    | grep -Ev "$notExtensions|run|snap" | sort | uniq | head -n 200)
-  
+  # obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
+  # | grep -Ev "$notExtensions|run|snap" | sort | uniq | head -n 200)
+  obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
+  | grep -Ev "$notExtensions|run|snap" \
+  | sort \
+  | uniq \
+| head -n 200)
+  # | awk -F/ '{line_init=$0; if (!cont){ cont=0 }; $NF=""; act=$0; if (act == | pre){(cont += 1)} else {cont=0}; if (cont < 5){ print line_init; } if (cont ==  | "5"){print "#)You_can_write_even_more_files_inside_last_directory\n"}; pre=act }'\
   if [ -n "$obmowbe" ]; then
     echo "$obmowbe" | while read line; do
       # Check if world-writable (high risk!)

@@ -13,19 +13,19 @@ if ! [ "$IAMROOT" ]; then
 | head -n 200)
 #подумать про это авк, пока странно кажется
 #  | head -n 200)
-	small_print "$obmowbe"
+	# small_print "$obmowbe"
 
-  printf "%s\n" "$obmowbe" | while read l; 
+  printf "%s\n" "$obmowbe" | while read line; 
 	do
 
-    if echo "$l" | grep -q "You_can_write_even_more_files_inside_last_directory"; then
+    if echo "$line" | grep -q "You_can_write_even_more_files_inside_last_directory"; then
       # printf $ITALIC"$l\n"$NC;
-      small_print "$l";
-    elif echo "$l" | grep -qE "$writeVB"; then
-      print_red_yellow "$l"
+      small_print "line";
+    elif echo "$line" | grep -qE "$writeVB"; then
+      print_red_yellow "$line"
       # echo "$l" | sed -${E} "s,$writeVB,${SED_RED_YELLOW},"
     else 
-      print_red "$l"
+      print_red "$line"
       # echo "$l" | sed -${E} "s,$writeB,${SED_RED},"
     fi
   done
