@@ -41,8 +41,10 @@ if ! [ "$IAMROOT" ]; then
       elif echo "$line" | grep -qE "$writeVB"; then
         print_red_yellow "$line"
         # echo "$l" | sed -${E} "s,$writeVB,${SED_RED_YELLOW},"
-      else 
+      elif echo "$line" | grep -qE "$writeB"; then
         print_red "$line"
+      else
+        small_print "$line"
         # echo "$l" | sed -${E} "s,$writeB,${SED_RED},"
       fi
 
