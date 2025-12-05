@@ -1,8 +1,8 @@
 #!/bin/bash
 
-print_2title "Interesting writable files (not in Home)"
-
 if ! [ "$IAMROOT" ]; then
+
+print_2title "Interesting writable files (not in Home)"
   obmowbe=$(find $ROOT_FOLDER '(' -type f -or -type d ')' \
     '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' \
     ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
@@ -41,4 +41,7 @@ if ! [ "$IAMROOT" ]; then
     echo_not_found
   fi
   echo ""
+
 fi
+
+echo ""
