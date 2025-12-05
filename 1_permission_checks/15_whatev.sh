@@ -1,6 +1,5 @@
 #!/bin/bash
 
-print_2title "THIS IS 1ST"
 if ! [ "$IAMROOT" ]; then
   print_2title "Interesting writable files owned by me or writable by everyone (not in Home) (max 200)"
   
@@ -15,11 +14,11 @@ if ! [ "$IAMROOT" ]; then
         dir=$0
         sub(/\/[^\/]+$/, "", dir)
         count[dir]++
-        if (count[dir] <= 5) {
+        if (count[dir] <= 4) {
           print $0
         }
-        else if (count[dir] == 6) {
-          print "# Many more files in: " dir
+        else if (count[dir] == 5) {
+          print "# More files in: " dir
         }
       }' \
     | head -n 200)
