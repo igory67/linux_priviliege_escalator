@@ -17,11 +17,9 @@ if ! [ "$IAMROOT" ]; then
               }' \
             | head -n 200)
         
-        # ↓ This IF must have matching FI!
-        if [ -n "$iwfbg" ] || [ "$DEBUG" ]; then
+        if [ -n "$iwfbg" ]; then
             print_green "  Group $g:"
             
-            # ↓ This WHILE must have matching DONE!
             echo "$iwfbg" | while read line; do
                 if echo "$line" | grep -q "^# More files in: "; then
                     print_cyan "$line"
@@ -32,10 +30,10 @@ if ! [ "$IAMROOT" ]; then
                 else
                     echo "$line"
                 fi
-            done  # ← Closes WHILE
+            done  
             
-        fi  # ← Closes IF
+        fi  
         
-    done  # ← Closes FOR loop
+    done  
     echo ""
-fi  # ← Closes outer IF
+fi  

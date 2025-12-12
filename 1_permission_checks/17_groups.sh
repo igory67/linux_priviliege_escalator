@@ -15,13 +15,13 @@ if ! [ "$IAMROOT" ]; then
                 sub(/\/[^\/]+$/, "", dir)
                 count[dir]++
                 if (count[dir] <= 4) {
-                  print $0
-                  
+                print $0
+                
                 }
                 else if (count[dir] == 5) {
-                  print "# More files in: " dir
+                print "# More files in: " dir
                 }
-              }')
+            }' | head -n 200
 
         #| awk -F/ '{line_init=$0; if (!cont){ cont=0 }; $NF=""; act=$0; if (act == pre){(cont += 1)} else {cont=0}; if (cont < 5){ print line_init; } if (cont == "5"){print "#)You_can_write_even_more_files_inside_last_directory\n"}; pre=act }' | head -n 200)
         if [ "$iwfbg" ] || [ "$DEBUG" ]; then
