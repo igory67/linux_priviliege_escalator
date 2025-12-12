@@ -3,8 +3,7 @@
 if ! [ "$IAMROOT" ]; then
     print_2title "Interesting GROUP writable files (not in Home)"
     
-    for g in $(groups); do
-        # Find group-writable files with directory limiting
+    for g in $(groups); do  # ← STARTS for loop
         iwfbg=$(find $ROOT_FOLDER '(' -type f -or -type d ')' \
             -group "$g" -perm -g=w \
             ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
@@ -13,18 +12,16 @@ if ! [ "$IAMROOT" ]; then
                 dir=$0
                 sub(/\/[^\/]+$/, "", dir)
                 count[dir]++
-                if (count[dir] <= 4) {
-                  print $0
-                }
-                else if (count[dir] == 5) {
-                  print "# More files in: " dir
-                }
+                if (count[dir] <= 4) print $0
+                else if (count[dir] == 5) print "# More files in: " dir
               }' \
             | head -n 200)
         
+        # ↓ This IF must have matching FI!
         if [ -n "$iwfbg" ] || [ "$DEBUG" ]; then
             print_green "  Group $g:"
             
+            # ↓ This WHILE must have matching DONE!
             echo "$iwfbg" | while read line; do
                 if echo "$line" | grep -q "^# More files in: "; then
                     print_cyan "$line"
@@ -35,8 +32,10 @@ if ! [ "$IAMROOT" ]; then
                 else
                     echo "$line"
                 fi
-            done
-        fi
-    done
+            done  # ← Closes WHILE
+            
+        fi  # ← Closes IF
+        
+    done  # ← Closes FOR loop
     echo ""
-fi
+fi  # ← Closes outer IF
