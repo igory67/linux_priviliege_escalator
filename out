@@ -1,43 +1,6 @@
-14
 
-[1;34m==================||Interesting writable files owned by me or writable by everyone (not in Home) (max 200)||=====================[0m
+[1;34m==================||Interesting GROUP writable files (not in Home)||=====================[0m
 
-[1m/dev/mqueue[0m
-[1m/dev/shm[0m
-[1;31;43m/etc/init.d/x11-common[0m
-[1;31;43m/etc/ld.so.conf.d/wconf.conf[0m
-[1;31;43m/etc/profile.d/01-locale-fix.sh[0m
-[1m/home/serveruser1[0m
-[1m/tmp[0m
-[1m/tmp/.font-unix[0m
-[1m/tmp/.ICE-unix[0m
-[1m/tmp/tmux-1002[0m
-[1m/tmp/.X11-unix[0m
-# More files in: /tmp[0m
-[0;31m/usr/bin/binthatseditable[0m
-[0;31m/usr/bin/urownbinomg[0m
-[1m/var/crash[0m
-[1m/var/mail/serveruser1[0m
-[1m/var/tmp[0m
-
-
-[1;34m==================||Interesting writable files owned by me or writable by everyone (not in Home) (max 200)||=====================[0m
-
-/dev/mqueue
-/dev/shm
-[1;31;43m/etc/init.d/x11-common[0m
-[1;31;43m/etc/ld.so.conf.d/wconf.conf[0m
-[1;31;43m/etc/profile.d/01-locale-fix.sh[0m
-/home/serveruser1
-/tmp
-/tmp/.font-unix
-/tmp/.ICE-unix
-/tmp/tmux-1002
-/tmp/.X11-unix
-# More files in: /tmp
-[0;31m/usr/bin/binthatseditable[0m
-[0;31m/usr/bin/urownbinomg[0m
-/var/crash
-/var/mail/serveruser1
-/var/tmp
+[1;32m  Group serveruser1:[0m
+[1;31;43m/etc/systemd/network/enp0s3.conf[0m
 

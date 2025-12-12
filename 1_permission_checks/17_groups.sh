@@ -1,44 +1,39 @@
 #!/bin/bash
 
 if ! [ "$IAMROOT" ]; then
-    print_2title "Interesting GROUP writable files (not in Home) (max 200)"
-    for g in $(groups); 
-    do
-    #это еще одна болезнь iwfbg поменяю
-        
+    print_2title "Interesting GROUP writable files (not in Home)"
+    
+    for g in $(groups); do  # ← STARTS for loop
         iwfbg=$(find $ROOT_FOLDER '(' -type f -or -type d ')' \
-        -group $g -perm -g=w ! -path "/proc/*" ! -path "/sys/*" \
-        ! -path "$HOME/*" 2>/dev/null \
-        | grep -Ev "$notExtensions" \
-        | awk -F/ '{
+            -group "$g" -perm -g=w \
+            ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null \
+            | grep -Ev "$notExtensions" \
+            | awk -F/ '{
                 dir=$0
                 sub(/\/[^\/]+$/, "", dir)
                 count[dir]++
-                if (count[dir] <= 4) {
-                print $0
-                
-                }
-                else if (count[dir] == 5) {
-                print "# More files in: " dir
-                }
-            }' | head -n 200
-
-        #| awk -F/ '{line_init=$0; if (!cont){ cont=0 }; $NF=""; act=$0; if (act == pre){(cont += 1)} else {cont=0}; if (cont < 5){ print line_init; } if (cont == "5"){print "#)You_can_write_even_more_files_inside_last_directory\n"}; pre=act }' | head -n 200)
-        if [ "$iwfbg" ] || [ "$DEBUG" ]; then
-            printf "  Group $GREEN$g:\n$NC";
-            printf "%s\n" "$iwfbg" | while read l;
-            do
-                if echo "$l" | grep -q "You_can_write_even_more_files_inside_last_directory"; then 
-                    printf $ITALIC"$l\n"$NC;
-                elif echo "$l" | grep -Eq "$writeVB"; then
-                    echo "$l" | sed -${E} "s,$writeVB,${SED_RED_YELLOW},"
+                if (count[dir] <= 4) print $0
+                else if (count[dir] == 5) print "# More files in: " dir
+              }' \
+            | head -n 200)
+        
+        if [ -n "$iwfbg" ]; then
+            print_green "  Group $g:"
+            
+            echo "$iwfbg" | while read line; do
+                if echo "$line" | grep -q "^# More files in: "; then
+                    print_cyan "$line"
+                elif echo "$line" | grep -qE "$writeVB"; then
+                    print_red_yellow "$line"
+                elif echo "$line" | grep -qE "$writeB"; then
+                    print_red "$line"
                 else
-                    echo "$l" | sed -${E} "s,$writeB,${SED_RED},"
-                fi 
-            done
-        fi
-    done 
+                    echo "$line"
+                fi
+            done  
+            
+        fi  
+        
+    done  
     echo ""
-fi
-
-echo ""
+fi  
