@@ -1,24 +1,28 @@
 #!/bin/bash
 print_2title "SUID checks!"
 
-#look for all suid files except for in /dev/
+# 4000 perm = SUID SGID STICKY BIT 4 2 1 -> 4 == suid очевидно! ; в /dev/ не ищем
 suids_files=$(find $ROOT_FOLDER -perm -4000 -type f ! -path "/dev/*" 2>/dev/null)
 
-
+#Потом цикл по каждой строке
 printf "%s\n" "$suids_files" | while read s; do
   s=$(ls -lahtr "$s")
-  #if starts like "total 332K" then no SUID bin was found and xargs just executed "ls" in the current folder
-  #so we skip it in that case!
+  #в s кладем ll по найденному пути
+
+  #total = directory, поэтому скип
   if echo "$s" | grep -qE "^total"; then break; fi
 
-  sname="$(echo $s | awk '{print $9}')"
-  #skip noise
+  #принтит название т.е. 9 пункт ls -lahtr
+  sname="$(echo $s | awk '{print $9}')" 
+  #skip . .. понятно Ладно запишу! . - cur dir .. - prev dir
   if [ "$sname" = "."  ] || [ "$sname" = ".."  ]; then
     true 
   
   # own the suid file? for some reason
   elif ! [ "$IAMROOT" ] && [ -O "$sname" ]; then
+    print_red " Owned SUID file!!!: %s", $sname
     echo "You own the SUID file: $sname" | sed -${E} "s,.*,${SED_RED},"
+
   # writable suid file
   elif ! [ "$IAMROOT" ] && [ -w "$sname" ]; then #If write permision, win found (no check exploits)
     echo "You can write SUID file: $sname" | sed -${E} "s,.*,${SED_RED_YELLOW},"
