@@ -20,7 +20,7 @@ printf "%s\n" "$suids_files" | while read s; do
   
   # own the suid file? for some reason
   elif ! [ "$IAMROOT" ] && [ -O "$sname" ]; then
-    print_red " Owned SUID file!!!: %s", $sname
+    print_red " Owned SUID file!!!: $sname" 
     echo "You own the SUID file: $sname" | sed -${E} "s,.*,${SED_RED},"
 
   # writable suid file

@@ -221,6 +221,9 @@ check_critical_root_path()
 #     fi
 # }
 
+export sudoB="$(whoami)|ALL:ALL|ALL : ALL|ALL|env_keep|NOPASSWD|SETENV|/apache2|/cryptsetup|/mount"
+export sudoG="NOEXEC"
+
 #start with " /", end with "$", divide path and vulnversion "%". SPACE IS ONLY ALLOWED AT BEGINNING, DONT USE IT IN VULN DESCRIPTION
 export sidB="/apache2$%Read_root_passwd__apache2_-f_/etc/shadow\(CVE-2019-0211\)\
  /at$%RTru64_UNIX_4.0g\(CVE-2002-1614\)\

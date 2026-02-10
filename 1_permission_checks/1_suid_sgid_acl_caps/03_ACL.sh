@@ -8,5 +8,5 @@ print_2title "ACL files up to 70"
 | sed -${E} "s,$knw_usrs,${SED_GREEN}," \
 | sed "s,$USER,${SED_RED},"
 
-
+# -t tabulation; -s 
 echo ""
