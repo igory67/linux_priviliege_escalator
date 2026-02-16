@@ -12,7 +12,7 @@ check_su_exists()
     error=$(echo "" | timeout 1 su $(whoami) -c whoami 2>&1)
 
   
-    if [ "$EXISTS_SU" ] && ! echo $error | grep -q "must be run from a terminal";
+    if [ "$EXISTS" ] && ! echo $error | grep -q "must be run from a terminal";
 
         then
 
