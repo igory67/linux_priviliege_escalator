@@ -2,10 +2,13 @@
 [1;34m==================||trying different passwords for other users||=====================[0m
 
  Bruteforcing user root...
- Bruteforcing user qwe...
-[1;31;43mWORKS FOR qwe PASSWORD:  qwe[0m
- Bruteforcing user named...
- Bruteforcing user serveruser1...
-[1;31;43mWORKS FOR serveruser1 PASSWORD:  serveruser1[0m
- Bruteforcing user testguy...
-[1;31;43mWORKS FOR testguy PASSWORD:  testguy[0m
+200
+400
+600
+800
+[1;31;43mWORKS FOR root PASSWORD:  nigger[0m
+1000
+1200
+1400
+1600
+1800
