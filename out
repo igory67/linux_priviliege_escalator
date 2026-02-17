@@ -2,13 +2,9 @@
 [1;34m==================||trying different passwords for other users||=====================[0m
 
  Bruteforcing user root...
-200
-400
-600
-800
-[1;31;43mWORKS FOR root PASSWORD:  nigger[0m
-1000
-1200
-1400
-1600
-1800
+[1;31;43mWORKS FOR root PASSWORD:  dragon[0m
+passwd found
+ Bruteforcing user qwe...
+[1;31;43mWORKS FOR qwe PASSWORD:  qwe[0m
+login:login for qwe
+ Bruteforcing user named...
